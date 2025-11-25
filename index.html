@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoRoot - Understanding Soil Pollution</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="main-nav" id="mainNav">
+        <div class="nav-logo">
+            <span class="logo-icon">🌱</span>
+            <span class="logo-text">EcoRoot</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#hero" class="nav-link active">Home</a></li>
+            <li><a href="#causes" class="nav-link">Causes</a></li>
+            <li><a href="#consequences" class="nav-link">Impact</a></li>
+            <li><a href="#solutions" class="nav-link">Solutions</a></li>
+            <li><a href="#action" class="nav-link">Take Action</a></li>
+        </ul>
+        <button class="nav-toggle" aria-label="Toggle navigation">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </nav>
+
+    <!-- Progress Indicator -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- Section 1: Hero/Introduction -->
+    <section id="hero" class="hero-section">
+        <div class="hero-content">
+            <h1 class="hero-title">
+                <span class="title-line">The Ground</span>
+                <span class="title-line">Beneath Our Feet</span>
+                <span class="title-line highlight">Is Dying</span>
+            </h1>
+            <p class="hero-subtitle">Scroll to witness the transformation of our precious soil</p>
+            
+            <!-- Hero Statistics - moved inside hero-content -->
+            <div class="hero-stats visible" id="heroStats">
+                <div class="stat-item">
+                    <span class="stat-number" data-target="33">33</span>
+                    <span class="stat-unit">%</span>
+                    <span class="stat-label">of global soil is degraded</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-target="24">24</span>
+                    <span class="stat-unit">B</span>
+                    <span class="stat-label">tonnes of fertile soil lost yearly</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-target="95">95</span>
+                    <span class="stat-unit">%</span>
+                    <span class="stat-label">of our food depends on soil</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="scroll-indicator">
+            <div class="mouse">
+                <div class="wheel"></div>
+            </div>
+            <p>Scroll Down</p>
+        </div>
+    </section>
+
+    <!-- Section 2: Causes Exploration -->
+    <section id="causes" class="causes-section">
+        <div class="section-header">
+            <span class="section-number">01</span>
+            <h2 class="section-title">What's Poisoning Our Earth?</h2>
+            <p class="section-description">Drag the pollution sources onto the soil to see their devastating effects</p>
+        </div>
+        
+        <div class="causes-interactive">
+            <!-- Pollution Sources (Draggable) -->
+            <div class="pollution-sources" id="pollutionSources">
+                <div class="source-item" draggable="true" data-type="industrial">
+                    <div class="source-icon">🏭</div>
+                    <span class="source-label">Industrial Waste</span>
+                    <p class="source-info">Heavy metals, chemicals, and toxic byproducts</p>
+                </div>
+                <div class="source-item" draggable="true" data-type="pesticides">
+                    <div class="source-icon">🧪</div>
+                    <span class="source-label">Pesticides</span>
+                    <p class="source-info">Chemical compounds that persist in soil for years</p>
+                </div>
+                <div class="source-item" draggable="true" data-type="plastic">
+                    <div class="source-icon">🛢️</div>
+                    <span class="source-label">Plastic Waste</span>
+                    <p class="source-info">Microplastics that never fully decompose</p>
+                </div>
+                <div class="source-item" draggable="true" data-type="mining">
+                    <div class="source-icon">⛏️</div>
+                    <span class="source-label">Mining Runoff</span>
+                    <p class="source-info">Acid drainage and heavy metal contamination</p>
+                </div>
+            </div>
+            
+            <!-- Soil Drop Zone -->
+            <div class="soil-drop-zone" id="soilDropZone">
+                <div class="drop-zone-visual">
+                    <canvas id="causesSoilCanvas" class="soil-canvas"></canvas>
+                    <div class="pollution-effects-layer" id="pollutionEffectsLayer">
+                        <!-- Visible pollution items will appear here -->
+                    </div>
+                    <div class="drop-hint" id="dropHint">
+                        <span>Drop pollutants here</span>
+                    </div>
+                </div>
+                <div class="contamination-meter">
+                    <span class="meter-label">Contamination Level</span>
+                    <div class="meter-bar">
+                        <div class="meter-fill" id="contaminationFill"></div>
+                    </div>
+                    <span class="meter-percentage" id="contaminationPercent">0%</span>
+                </div>
+            </div>
+            
+            <!-- Pollution Effects Panel -->
+            <div class="effects-panel" id="effectsPanel">
+                <h3>Active Contaminants</h3>
+                <ul class="effects-list" id="effectsList"></ul>
+                <button class="reset-btn" id="resetCauses">Reset Soil</button>
+            </div>
+        </div>
+        
+        <!-- Detailed Cause Information -->
+        <div class="cause-details" id="causeDetails">
+            <div class="detail-card" data-cause="industrial">
+                <h4>Industrial Waste</h4>
+                <p>Factories release heavy metals like lead, mercury, and cadmium into the soil through improper disposal. These toxins can persist for centuries.</p>
+                <ul>
+                    <li>Lead exposure affects 800+ million children globally</li>
+                    <li>Heavy metals bioaccumulate in food chains</li>
+                    <li>Groundwater contamination spreads pollution for miles</li>
+                </ul>
+            </div>
+            <div class="detail-card" data-cause="pesticides">
+                <h4>Pesticides & Herbicides</h4>
+                <p>Agricultural chemicals designed to kill pests don't discriminate - they destroy beneficial soil organisms essential for healthy ecosystems.</p>
+                <ul>
+                    <li>5.6 billion pounds of pesticides used annually worldwide</li>
+                    <li>Some compounds persist in soil for 15+ years</li>
+                    <li>Kills earthworms, beneficial bacteria, and fungi</li>
+                </ul>
+            </div>
+            <div class="detail-card" data-cause="plastic">
+                <h4>Plastic Pollution</h4>
+                <p>Plastic breaks down into microplastics that infiltrate every layer of soil, disrupting nutrient cycles and harming soil organisms.</p>
+                <ul>
+                    <li>Microplastics found in 90% of tested agricultural soils</li>
+                    <li>Takes 400+ years to decompose</li>
+                    <li>Leaches harmful additives into groundwater</li>
+                </ul>
+            </div>
+            <div class="detail-card" data-cause="mining">
+                <h4>Mining Activities</h4>
+                <p>Mining operations expose sulfide minerals that react with air and water, creating acid mine drainage that devastates surrounding ecosystems.</p>
+                <ul>
+                    <li>Acid drainage can continue for centuries after mines close</li>
+                    <li>Destroys aquatic life for miles downstream</li>
+                    <li>Heavy metals concentrate in agricultural areas</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: Consequences Visualization -->
+    <section id="consequences" class="consequences-section">
+        <div class="section-header">
+            <span class="section-number">02</span>
+            <h2 class="section-title">The Ripple Effect</h2>
+            <p class="section-description">Click on different elements to explore how soil pollution spreads through our world</p>
+        </div>
+        
+        <div class="ecosystem-diagram" id="ecosystemDiagram">
+            <!-- Central Soil Element -->
+            <div class="ecosystem-element central" data-element="soil" id="centralSoil">
+                <div class="element-visual">
+                    <svg viewBox="0 0 100 100">
+                        <circle cx="50" cy="50" r="45" class="soil-circle"/>
+                        <text x="50" y="55" text-anchor="middle" class="element-icon">🌍</text>
+                    </svg>
+                </div>
+                <span class="element-label">Polluted Soil</span>
+            </div>
+            
+            <!-- Connected Elements -->
+            <div class="ecosystem-element" data-element="plants" style="--angle: 0deg;">
+                <div class="element-visual">
+                    <div class="element-icon-wrapper">🌾</div>
+                </div>
+                <span class="element-label">Crops & Plants</span>
+                <div class="connection-line"></div>
+            </div>
+            
+            <div class="ecosystem-element" data-element="water" style="--angle: 60deg;">
+                <div class="element-visual">
+                    <div class="element-icon-wrapper">💧</div>
+                </div>
+                <span class="element-label">Water Sources</span>
+                <div class="connection-line"></div>
+            </div>
+            
+            <div class="ecosystem-element" data-element="animals" style="--angle: 120deg;">
+                <div class="element-visual">
+                    <div class="element-icon-wrapper">🦎</div>
+                </div>
+                <span class="element-label">Wildlife</span>
+                <div class="connection-line"></div>
+            </div>
+            
+            <div class="ecosystem-element" data-element="humans" style="--angle: 180deg;">
+                <div class="element-visual">
+                    <div class="element-icon-wrapper">👨‍👩‍👧‍👦</div>
+                </div>
+                <span class="element-label">Human Health</span>
+                <div class="connection-line"></div>
+            </div>
+            
+            <div class="ecosystem-element" data-element="economy" style="--angle: 240deg;">
+                <div class="element-visual">
+                    <div class="element-icon-wrapper">📉</div>
+                </div>
+                <span class="element-label">Economy</span>
+                <div class="connection-line"></div>
+            </div>
+            
+            <div class="ecosystem-element" data-element="climate" style="--angle: 300deg;">
+                <div class="element-visual">
+                    <div class="element-icon-wrapper">🌡️</div>
+                </div>
+                <span class="element-label">Climate</span>
+                <div class="connection-line"></div>
+            </div>
+        </div>
+        
+        <!-- Impact Detail Modal -->
+        <div class="impact-modal" id="impactModal">
+            <div class="modal-content">
+                <button class="modal-close" id="modalClose">&times;</button>
+                <div class="modal-header">
+                    <span class="modal-icon" id="modalIcon"></span>
+                    <h3 class="modal-title" id="modalTitle"></h3>
+                </div>
+                <div class="modal-body" id="modalBody">
+                    <!-- Dynamic content -->
+                </div>
+                <div class="modal-visual" id="modalVisual">
+                    <!-- Animated visualization -->
+                </div>
+            </div>
+        </div>
+        
+        <!-- Impact Statistics -->
+        <div class="impact-stats">
+            <div class="impact-stat">
+                <div class="stat-icon">🍽️</div>
+                <h4>Food Contamination</h4>
+                <p>Heavy metals in soil enter crops, affecting 820+ million people with food insecurity</p>
+            </div>
+            <div class="impact-stat">
+                <div class="stat-icon">🏥</div>
+                <h4>Health Crisis</h4>
+                <p>Soil pollutants linked to cancer, neurological damage, and developmental issues</p>
+            </div>
+            <div class="impact-stat">
+                <div class="stat-icon">🦠</div>
+                <h4>Ecosystem Collapse</h4>
+                <p>Loss of soil biodiversity threatens 25% of all Earth's species</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4: Solutions Simulator -->
+    <section id="solutions" class="solutions-section">
+        <div class="section-header">
+            <span class="section-number">03</span>
+            <h2 class="section-title">Healing the Earth</h2>
+            <p class="section-description">Apply remediation techniques to restore the polluted soil</p>
+        </div>
+        
+        <div class="solutions-simulator">
+            <!-- Polluted Soil Visualization -->
+            <div class="solution-soil-container">
+                <canvas id="solutionCanvas"></canvas>
+                <div class="soil-health-indicator">
+                    <span class="health-label">Soil Health</span>
+                    <div class="health-bar">
+                        <div class="health-fill" id="healthFill"></div>
+                    </div>
+                    <span class="health-status" id="healthStatus">Severely Polluted</span>
+                </div>
+            </div>
+            
+            <!-- Solution Tools -->
+            <div class="solution-tools" id="solutionTools">
+                <h3>Remediation Techniques</h3>
+                <div class="tools-grid">
+                    <div class="tool-item" draggable="true" data-solution="phytoremediation">
+                        <div class="tool-icon">🌻</div>
+                        <span class="tool-name">Phytoremediation</span>
+                        <p class="tool-desc">Plants that absorb toxins from soil</p>
+                        <span class="tool-effect">+15% Health</span>
+                    </div>
+                    <div class="tool-item" draggable="true" data-solution="composting">
+                        <div class="tool-icon">🍂</div>
+                        <span class="tool-name">Composting</span>
+                        <p class="tool-desc">Organic matter restores nutrients</p>
+                        <span class="tool-effect">+20% Health</span>
+                    </div>
+                    <div class="tool-item" draggable="true" data-solution="bioremediation">
+                        <div class="tool-icon">🦠</div>
+                        <span class="tool-name">Bioremediation</span>
+                        <p class="tool-desc">Microorganisms break down pollutants</p>
+                        <span class="tool-effect">+25% Health</span>
+                    </div>
+                    <div class="tool-item" draggable="true" data-solution="covercrops">
+                        <div class="tool-icon">🌿</div>
+                        <span class="tool-name">Cover Crops</span>
+                        <p class="tool-desc">Prevent erosion, add organic matter</p>
+                        <span class="tool-effect">+10% Health</span>
+                    </div>
+                    <div class="tool-item" draggable="true" data-solution="soilamendments">
+                        <div class="tool-icon">iteite</div>
+                        <span class="tool-name">Soil Amendments</span>
+                        <p class="tool-desc">Lime and biochar neutralize toxins</p>
+                        <span class="tool-effect">+18% Health</span>
+                    </div>
+                    <div class="tool-item" draggable="true" data-solution="filtration">
+                        <div class="tool-icon">🔬</div>
+                        <span class="tool-name">Filtration Systems</span>
+                        <p class="tool-desc">Remove contaminants from water</p>
+                        <span class="tool-effect">+12% Health</span>
+                    </div>
+                </div>
+                <button class="reset-btn" id="resetSolutions">Reset Simulation</button>
+            </div>
+            
+            <!-- Applied Solutions List -->
+            <div class="applied-solutions" id="appliedSolutions">
+                <h4>Applied Techniques</h4>
+                <ul class="applied-list" id="appliedList"></ul>
+            </div>
+        </div>
+        
+        <!-- Success Stories -->
+        <div class="success-stories">
+            <h3>Real-World Success Stories</h3>
+            <div class="stories-carousel">
+                <div class="story-card">
+                    <div class="story-image" style="background-image: url('images/success-1.jpg');">
+                        <div class="story-overlay">
+                            <span class="story-location">📍 Chattanooga, USA</span>
+                        </div>
+                    </div>
+                    <div class="story-content">
+                        <h4>Industrial Site Revival</h4>
+                        <p>Former industrial wasteland transformed into thriving urban farm using phytoremediation techniques.</p>
+                        <span class="story-stat">98% reduction in lead levels</span>
+                    </div>
+                </div>
+                <div class="story-card">
+                    <div class="story-image" style="background-image: url('images/success-2.jpg');">
+                        <div class="story-overlay">
+                            <span class="story-location">📍 Netherlands</span>
+                        </div>
+                    </div>
+                    <div class="story-content">
+                        <h4>Agricultural Recovery</h4>
+                        <p>Decades of pesticide use reversed through comprehensive soil rehabilitation program.</p>
+                        <span class="story-stat">200% increase in crop yield</span>
+                    </div>
+                </div>
+                <div class="story-card">
+                    <div class="story-image" style="background-image: url('images/success-3.jpg');">
+                        <div class="story-overlay">
+                            <span class="story-location">📍 Japan</span>
+                        </div>
+                    </div>
+                    <div class="story-content">
+                        <h4>Community Restoration</h4>
+                        <p>Local communities restored contaminated rice paddies using traditional and modern methods.</p>
+                        <span class="story-stat">Safe food production restored</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 5: Action Section -->
+    <section id="action" class="action-section">
+        <div class="section-header">
+            <span class="section-number">04</span>
+            <h2 class="section-title">Your Turn to Act</h2>
+            <p class="section-description">Get a personalized action plan based on your situation</p>
+        </div>
+        
+        <!-- Context Selector -->
+        <div class="context-selector" id="contextSelector">
+            <h3>Tell us about yourself</h3>
+            <div class="selector-grid">
+                <div class="selector-group">
+                    <label>I am a...</label>
+                    <div class="selector-options" id="roleSelector">
+                        <button class="selector-btn" data-role="homeowner">
+                            <span class="btn-icon">🏠</span>
+                            <span class="btn-label">Homeowner</span>
+                        </button>
+                        <button class="selector-btn" data-role="farmer">
+                            <span class="btn-icon">🚜</span>
+                            <span class="btn-label">Farmer</span>
+                        </button>
+                        <button class="selector-btn" data-role="student">
+                            <span class="btn-icon">📚</span>
+                            <span class="btn-label">Student</span>
+                        </button>
+                        <button class="selector-btn" data-role="business">
+                            <span class="btn-icon">🏢</span>
+                            <span class="btn-label">Business Owner</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="selector-group">
+                    <label>I live in a...</label>
+                    <div class="selector-options" id="locationSelector">
+                        <button class="selector-btn" data-location="urban">
+                            <span class="btn-icon">🏙️</span>
+                            <span class="btn-label">Urban Area</span>
+                        </button>
+                        <button class="selector-btn" data-location="suburban">
+                            <span class="btn-icon">🏘️</span>
+                            <span class="btn-label">Suburban Area</span>
+                        </button>
+                        <button class="selector-btn" data-location="rural">
+                            <span class="btn-icon">🌾</span>
+                            <span class="btn-label">Rural Area</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <button class="generate-btn" id="generatePlan" disabled>
+                <span>Generate My Action Plan</span>
+                <svg viewBox="0 0 24 24" class="arrow-icon">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+            </button>
+        </div>
+        
+        <!-- Personalized Action Plan -->
+        <div class="action-plan" id="actionPlan" style="display: none;">
+            <div class="plan-header">
+                <h3 id="planTitle">Your Personalized Action Plan</h3>
+                <p id="planSubtitle"></p>
+            </div>
+            
+            <div class="plan-content">
+                <!-- Immediate Actions -->
+                <div class="action-category">
+                    <div class="category-header">
+                        <span class="category-icon">⚡</span>
+                        <h4>Immediate Actions</h4>
+                        <span class="category-tag">Start Today</span>
+                    </div>
+                    <ul class="action-list" id="immediateActions"></ul>
+                </div>
+                
+                <!-- Short-term Actions -->
+                <div class="action-category">
+                    <div class="category-header">
+                        <span class="category-icon">📅</span>
+                        <h4>Short-term Goals</h4>
+                        <span class="category-tag">This Month</span>
+                    </div>
+                    <ul class="action-list" id="shortTermActions"></ul>
+                </div>
+                
+                <!-- Long-term Actions -->
+                <div class="action-category">
+                    <div class="category-header">
+                        <span class="category-icon">🎯</span>
+                        <h4>Long-term Commitment</h4>
+                        <span class="category-tag">Ongoing</span>
+                    </div>
+                    <ul class="action-list" id="longTermActions"></ul>
+                </div>
+            </div>
+            
+            <!-- Progress Tracker -->
+            <div class="progress-tracker">
+                <h4>Track Your Progress</h4>
+                <div class="tracker-stats">
+                    <div class="tracker-stat">
+                        <span class="tracker-number" id="completedCount">0</span>
+                        <span class="tracker-label">Completed</span>
+                    </div>
+                    <div class="tracker-stat">
+                        <span class="tracker-number" id="totalCount">0</span>
+                        <span class="tracker-label">Total Actions</span>
+                    </div>
+                    <div class="tracker-stat">
+                        <span class="tracker-number" id="impactScore">0</span>
+                        <span class="tracker-label">Impact Score</span>
+                    </div>
+                </div>
+                <div class="overall-progress">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="overallProgress"></div>
+                    </div>
+                    <span class="progress-text" id="progressText">0% Complete</span>
+                </div>
+            </div>
+            
+            <!-- Share & Download -->
+            <div class="plan-actions">
+                <button class="action-btn secondary" id="newPlan">
+                    <span>Create New Plan</span>
+                </button>
+                <button class="action-btn primary" id="downloadPlan">
+                    <span>Download Checklist</span>
+                    <svg viewBox="0 0 24 24" class="download-icon">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Community Impact -->
+        <div class="community-impact">
+            <h3>Join the Movement</h3>
+            <div class="impact-counter">
+                <div class="counter-item">
+                    <span class="counter-number" data-target="15847">0</span>
+                    <span class="counter-label">People Taking Action</span>
+                </div>
+                <div class="counter-item">
+                    <span class="counter-number" data-target="2341">0</span>
+                    <span class="counter-label">Hectares Restored</span>
+                </div>
+                <div class="counter-item">
+                    <span class="counter-number" data-target="89">0</span>
+                    <span class="counter-label">Countries Involved</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <span class="footer-logo">🌱 EcoRoot</span>
+                <p>Empowering communities to heal our planet, one action at a time.</p>
+            </div>
+            <div class="footer-links">
+                <div class="link-group">
+                    <h4>Learn More</h4>
+                    <a href="#">Research Papers</a>
+                    <a href="#">Educational Resources</a>
+                    <a href="#">FAQ</a>
+                </div>
+                <div class="link-group">
+                    <h4>Get Involved</h4>
+                    <a href="#">Volunteer</a>
+                    <a href="#">Donate</a>
+                    <a href="#">Partner With Us</a>
+                </div>
+                <div class="link-group">
+                    <h4>Connect</h4>
+                    <a href="#">Newsletter</a>
+                    <a href="#">Social Media</a>
+                    <a href="#">Contact</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 EcoRoot. All rights reserved.</p>
+            <p>Built with 💚 for our planet</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/utils.js"></script>
+    <script src="js/hero.js"></script>
+    <script src="js/causes.js"></script>
+    <script src="js/consequences.js"></script>
+    <script src="js/solutions.js"></script>
+    <script src="js/action.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

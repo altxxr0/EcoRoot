@@ -1,0 +1,2378 @@
+/* =============================================
+   EcoRoot - Soil Pollution Awareness Website
+   Main Stylesheet
+   ============================================= */
+
+/* CSS Custom Properties */
+:root {
+    /* Modern Earth-toned Color Palette - Simplified & Cohesive */
+    --color-primary: #2D5A3D;        /* Deep forest green - primary brand */
+    --color-primary-light: #4A7C59;  /* Lighter green for accents */
+    --color-primary-dark: #1E3D2A;   /* Darker green for depth */
+    
+    --color-accent: #D4A03B;         /* Warm gold for highlights */
+    --color-accent-light: #E8C068;   /* Light gold */
+    
+    --color-soil-healthy: #5D4E37;
+    --color-soil-polluted: #2C2C2C;
+    --color-earth-brown: #8B7355;
+    --color-earth-dark: #3D2B1F;
+    
+    /* Legacy color aliases - mapped to new palette */
+    --color-leaf-green: #2D5A3D;     /* Maps to primary */
+    --color-leaf-light: #4A7C59;     /* Maps to primary-light */
+    --color-moss: #1E3D2A;           /* Maps to primary-dark */
+    
+    /* Simplified accent colors */
+    --color-warning: #E07B3C;        /* Orange warning */
+    --color-danger: #C23B22;         /* Red danger - high contrast */
+    --color-success: #2D5A3D;
+    
+    /* Neutral Colors - Better contrast */
+    --color-white: #FFFFFF;
+    --color-off-white: #F8F6F3;
+    --color-light-gray: #E5E2DD;
+    --color-gray: #6B6560;
+    --color-dark-gray: #3D3935;
+    --color-charcoal: #2A2725;
+    --color-black: #1A1815;
+    
+    /* Typography - Improved readability */
+    --font-display: 'Playfair Display', Georgia, serif;
+    --font-body: 'Open Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-size-base: 18px;          /* Increased from 16px */
+    --font-size-sm: 1rem;
+    --font-size-body: 1.125rem;      /* 18px+ for body text */
+    --font-size-lg: 1.25rem;
+    --font-size-xl: 1.5rem;
+    
+    /* Spacing - More generous */
+    --space-xs: 0.5rem;
+    --space-sm: 1rem;
+    --space-md: 1.5rem;
+    --space-lg: 3rem;
+    --space-xl: 5rem;
+    --space-xxl: 8rem;
+    
+    /* Transitions */
+    --transition-fast: 150ms ease;
+    --transition-base: 300ms ease;
+    --transition-slow: 500ms ease;
+    --transition-slower: 800ms ease;
+    
+    /* Shadows - Softer, more modern */
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.12);
+    --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.15);
+    
+    /* Border Radius */
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 16px;
+    --radius-xl: 24px;
+    --radius-full: 9999px;
+}
+
+/* Reset & Base Styles */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: var(--font-size-base, 18px);
+}
+
+body {
+    font-family: var(--font-body);
+    font-size: var(--font-size-body);
+    line-height: 1.7;
+    color: var(--color-charcoal);
+    background-color: var(--color-off-white);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+button {
+    font-family: inherit;
+    cursor: pointer;
+    border: none;
+    background: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+ul {
+    list-style: none;
+}
+
+/* =============================================
+   Navigation
+   ============================================= */
+.main-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-md) var(--space-lg);
+    background: transparent;
+    transition: background var(--transition-base), box-shadow var(--transition-base);
+}
+
+.main-nav.scrolled {
+    background: rgba(254, 254, 254, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: var(--shadow-sm);
+}
+
+.nav-logo {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-white);
+    transition: color var(--transition-base);
+    flex-shrink: 0;
+}
+
+.main-nav.scrolled .nav-logo {
+    color: var(--color-earth-dark);
+}
+
+.logo-icon {
+    font-size: 1.75rem;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    flex-wrap: nowrap;
+}
+
+.nav-link {
+    position: relative;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-white);
+    padding: var(--space-xs) var(--space-sm);
+    transition: color var(--transition-base);
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+}
+
+.main-nav.scrolled .nav-link {
+    color: var(--color-charcoal);
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--color-leaf-green);
+    transition: width var(--transition-base);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 100%;
+}
+
+.nav-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    padding: var(--space-sm);
+}
+
+.nav-toggle span {
+    width: 24px;
+    height: 2px;
+    background: var(--color-white);
+    transition: background var(--transition-base);
+}
+
+.main-nav.scrolled .nav-toggle span {
+    background: var(--color-charcoal);
+}
+
+/* Scroll Progress Bar */
+.scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--color-leaf-green), var(--color-leaf-light));
+    z-index: 1001;
+    width: 0;
+    transition: width 50ms linear;
+}
+
+/* =============================================
+   Section Common Styles
+   ============================================= */
+section {
+    padding: var(--space-xxl) var(--space-xl);
+    position: relative;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: var(--space-xl);
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 var(--space-lg);
+}
+
+.section-number {
+    display: inline-block;
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: var(--space-md);
+}
+
+.section-title {
+    font-size: clamp(2rem, 5vw, 3rem);
+    color: var(--color-charcoal);
+    margin-bottom: var(--space-md);
+    line-height: 1.2;
+}
+
+.section-description {
+    font-size: 1.2rem;
+    color: var(--color-gray);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.7;
+}
+
+/* =============================================
+   Hero Section
+   ============================================= */
+.hero-section {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(180deg, 
+        #2A1F15 0%,
+        #3D2B1F 40%,
+        #4A3D30 70%,
+        #5D4E37 100%);
+    overflow: hidden;
+    padding: var(--space-xl) var(--space-lg);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    padding: var(--space-xl);
+}
+
+.hero-title {
+    font-size: clamp(2.5rem, 8vw, 5rem);
+    font-weight: 700;
+    color: var(--color-white);
+    margin-bottom: var(--space-lg);
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8), 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.title-line {
+    display: block;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.8s ease forwards;
+}
+
+.title-line:nth-child(1) { animation-delay: 0.2s; }
+.title-line:nth-child(2) { animation-delay: 0.4s; }
+.title-line:nth-child(3) { animation-delay: 0.6s; }
+
+.title-line.highlight {
+    color: #FFD93D;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8), 0 0 30px rgba(255, 217, 61, 0.5);
+    -webkit-text-stroke: 1px rgba(0,0,0,0.3);
+}
+
+.hero-subtitle {
+    font-size: 1.35rem;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: var(--space-lg);
+    opacity: 0;
+    animation: fadeIn 0.8s ease 0.8s forwards;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+    max-width: 600px;
+    line-height: 1.6;
+}
+
+/* Scroll Indicator */
+.scroll-indicator {
+    position: absolute;
+    bottom: var(--space-md);
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-xs);
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.9rem;
+    animation: bounce 2s infinite;
+    z-index: 15;
+}
+
+.scroll-indicator p {
+    margin: 0;
+    font-weight: 500;
+}
+
+.mouse {
+    width: 22px;
+    height: 36px;
+    border: 2px solid rgba(255, 255, 255, 0.6);
+    border-radius: 11px;
+    position: relative;
+    background: transparent;
+}
+
+.wheel {
+    width: 3px;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 2px;
+    position: absolute;
+    top: 6px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: scroll 1.5s infinite;
+}
+
+/* Soil Animation Container */
+.soil-animation-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 40%;
+    overflow: hidden;
+}
+
+#soilCanvas {
+    width: 100%;
+    height: 100%;
+}
+
+.pollution-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, transparent 0%, rgba(44, 44, 44, var(--pollution-opacity, 0)) 100%);
+    pointer-events: none;
+    transition: background var(--transition-slower);
+}
+
+/* Hero Statistics */
+.hero-stats {
+    position: relative;
+    margin-top: var(--space-xl);
+    display: flex;
+    gap: var(--space-xl);
+    opacity: 1;
+    z-index: 10;
+    background: rgba(255, 255, 255, 0.95);
+    padding: var(--space-lg) var(--space-xl);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+}
+
+.hero-stats.visible {
+    opacity: 1;
+}
+
+.stat-item {
+    text-align: center;
+    color: var(--color-charcoal);
+}
+
+.stat-number {
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--color-primary);
+}
+
+.stat-unit {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--color-primary);
+}
+
+.stat-label {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--color-gray);
+    margin-top: var(--space-xs);
+    max-width: 150px;
+}
+
+/* =============================================
+   Causes Section
+   ============================================= */
+.causes-section {
+    background: var(--color-off-white);
+    padding-top: var(--space-lg);
+    padding-bottom: var(--space-xxl);
+}
+
+.causes-interactive {
+    display: grid;
+    grid-template-columns: 250px 1fr 250px;
+    gap: var(--space-lg);
+    margin-bottom: var(--space-xl);
+}
+
+/* Pollution Sources */
+.pollution-sources {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+}
+
+.source-item {
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    padding: var(--space-md);
+    cursor: grab;
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
+    box-shadow: var(--shadow-sm);
+    border: 2px solid transparent;
+}
+
+.source-item:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--color-primary);
+}
+
+.source-item:active {
+    cursor: grabbing;
+    transform: scale(0.98);
+}
+
+.source-item.dragging {
+    opacity: 0.5;
+    transform: scale(0.95);
+}
+
+.source-item.applied {
+    opacity: 0.4;
+    pointer-events: none;
+    background: var(--color-light-gray);
+}
+
+.source-icon {
+    font-size: 2.5rem;
+    margin-bottom: var(--space-sm);
+}
+
+.source-label {
+    display: block;
+    font-weight: 700;
+    color: var(--color-charcoal);
+    margin-bottom: var(--space-xs);
+    font-size: 1rem;
+}
+
+.source-info {
+    font-size: 0.85rem;
+    color: var(--color-gray);
+    line-height: 1.4;
+}
+
+/* Soil Drop Zone */
+.soil-drop-zone {
+    position: relative;
+    border-radius: var(--radius-lg);
+    min-height: 400px;
+    overflow: hidden;
+    transition: all var(--transition-slower);
+    background: linear-gradient(
+        to bottom,
+        #6B8E4E 0%,
+        #5A7A42 8%,
+        #5D4E37 18%,
+        #4A3D30 45%,
+        #3D2B1F 75%,
+        #2A1F15 100%
+    );
+    box-shadow: var(--shadow-lg), inset 0 0 60px rgba(0,0,0,0.3);
+    border: 3px solid rgba(255,255,255,0.1);
+}
+
+.soil-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: var(--radius-lg);
+}
+
+.pollution-effects-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 5;
+}
+
+.pollution-item {
+    position: absolute;
+    font-size: 1.5rem;
+    animation: pollutionDrop 0.5s ease-out forwards;
+    filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.4));
+    z-index: 10;
+}
+
+.pollution-item.industrial {
+    font-size: 2rem;
+}
+
+.pollution-item.small {
+    font-size: 1rem;
+}
+
+/* Industrial waste specific items */
+.waste-barrel {
+    width: 30px;
+    height: 40px;
+    background: linear-gradient(90deg, #2a2a2a, #4a4a4a, #2a2a2a);
+    border-radius: 3px;
+    position: absolute;
+    box-shadow: 2px 2px 6px rgba(0,0,0,0.5);
+}
+
+.waste-barrel::before {
+    content: '☢';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #ffcc00;
+    font-size: 14px;
+}
+
+.toxic-puddle {
+    position: absolute;
+    border-radius: 50%;
+    background: radial-gradient(ellipse, rgba(120, 200, 80, 0.7) 0%, rgba(80, 150, 50, 0.5) 50%, transparent 70%);
+    animation: puddleSpread 1s ease-out forwards, puddlePulse 2s ease-in-out infinite 1s;
+}
+
+.dead-plant {
+    position: absolute;
+    font-size: 1.2rem;
+    filter: grayscale(100%) brightness(0.6);
+    transform-origin: bottom center;
+    animation: plantWilt 0.8s ease-out forwards;
+}
+
+.microplastic {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: linear-gradient(45deg, #ff6b6b, #feca57, #48dbfb, #ff9ff3);
+    border-radius: 2px;
+    opacity: 0.8;
+}
+
+.pesticide-spray {
+    position: absolute;
+    width: 60px;
+    height: 40px;
+    background: radial-gradient(ellipse at center, rgba(255, 255, 100, 0.4) 0%, transparent 70%);
+    animation: sprayFade 2s ease-out forwards;
+}
+
+.mining-rock {
+    position: absolute;
+    font-size: 1.3rem;
+    filter: sepia(50%) brightness(0.8);
+}
+
+.acid-stream {
+    position: absolute;
+    height: 4px;
+    background: linear-gradient(90deg, transparent, rgba(255, 150, 50, 0.6), rgba(200, 100, 50, 0.4), transparent);
+    border-radius: 2px;
+    animation: acidFlow 2s linear infinite;
+}
+
+.soil-crack {
+    position: absolute;
+    width: 3px;
+    background: linear-gradient(to bottom, transparent, #1a1510, transparent);
+    transform-origin: top center;
+    animation: crackGrow 0.5s ease-out forwards;
+}
+
+@keyframes pollutionDrop {
+    0% {
+        transform: translateY(-50px) scale(0.5);
+        opacity: 0;
+    }
+    60% {
+        transform: translateY(10px) scale(1.1);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes puddleSpread {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes puddlePulse {
+    0%, 100% {
+        opacity: 0.7;
+    }
+    50% {
+        opacity: 0.9;
+    }
+}
+
+@keyframes plantWilt {
+    0% {
+        transform: rotate(0deg) scale(1);
+        filter: grayscale(0%) brightness(1);
+    }
+    100% {
+        transform: rotate(25deg) scale(0.8);
+        filter: grayscale(100%) brightness(0.5);
+    }
+}
+
+@keyframes sprayFade {
+    0% {
+        opacity: 0.8;
+        transform: scale(0.5);
+    }
+    50% {
+        opacity: 0.6;
+        transform: scale(1.2);
+    }
+    100% {
+        opacity: 0.3;
+        transform: scale(1.5);
+    }
+}
+
+@keyframes acidFlow {
+    0% {
+        background-position: -60px 0;
+    }
+    100% {
+        background-position: 60px 0;
+    }
+}
+
+@keyframes crackGrow {
+    0% {
+        height: 0;
+        opacity: 0;
+    }
+    100% {
+        height: var(--crack-height, 50px);
+        opacity: 1;
+    }
+}
+
+/* Visible Dropped Pollutants */
+.dropped-pollutant {
+    position: absolute;
+    z-index: 15;
+    font-size: 2.5rem;
+    transform: translate(-50%, -50%);
+    animation: pollutantDrop 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+    filter: drop-shadow(3px 3px 6px rgba(0,0,0,0.5));
+}
+
+.dropped-pollutant .pollutant-emoji {
+    display: block;
+    animation: pollutantBounce 2s ease-in-out infinite;
+}
+
+.dropped-pollutant.pollutant-industrial {
+    font-size: 3rem;
+}
+
+.dropped-pollutant.pollutant-pesticides::after {
+    content: '☠️';
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    font-size: 1rem;
+    animation: warningPulse 1s ease-in-out infinite;
+}
+
+.dropped-pollutant.pollutant-plastic {
+    font-size: 2.2rem;
+}
+
+.dropped-pollutant.pollutant-mining::after {
+    content: '⚠️';
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    font-size: 1rem;
+    animation: warningPulse 1s ease-in-out infinite;
+}
+
+/* Pollution Debris */
+.pollution-debris {
+    position: absolute;
+    z-index: 12;
+    transform: translate(-50%, -50%);
+    animation: debrisFall 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+    filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.4));
+    pointer-events: none;
+}
+
+.debris-industrial {
+    animation: debrisFall 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards, industrialGlow 2s ease-in-out infinite 0.8s;
+}
+
+.debris-pesticides {
+    animation: debrisFall 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards, toxicPulse 1.5s ease-in-out infinite 0.8s;
+}
+
+.debris-plastic {
+    animation: debrisFall 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards, plasticFloat 3s ease-in-out infinite 0.8s;
+}
+
+.debris-mining {
+    animation: debrisFall 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards, miningRumble 0.5s ease-in-out infinite 0.8s;
+}
+
+/* Dead Vegetation */
+.dead-vegetation {
+    position: absolute;
+    z-index: 14;
+    font-size: 1.8rem;
+    transform: translate(-50%, -50%);
+    animation: vegetationDie 1s ease-out forwards;
+    filter: drop-shadow(2px 2px 3px rgba(0,0,0,0.3));
+}
+
+/* Severe Warning */
+.severe-warning {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(90deg, #ff0000, #ff6600, #ff0000);
+    background-size: 200% 100%;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 1rem;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+    animation: severeWarningPulse 0.5s ease-in-out infinite, warningGradient 2s linear infinite;
+    z-index: 20;
+    box-shadow: 0 4px 15px rgba(255, 0, 0, 0.5);
+}
+
+/* Soil Layer Damage */
+.soil-layer {
+    transition: background 1s ease-out;
+}
+
+/* Pollutant-specific keyframes */
+@keyframes pollutantDrop {
+    0% {
+        transform: translate(-50%, -150%) scale(0.3);
+        opacity: 0;
+    }
+    50% {
+        transform: translate(-50%, -40%) scale(1.2);
+        opacity: 1;
+    }
+    70% {
+        transform: translate(-50%, -60%) scale(0.9);
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes pollutantBounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+@keyframes warningPulse {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.5;
+        transform: scale(1.2);
+    }
+}
+
+@keyframes debrisFall {
+    0% {
+        transform: translate(-50%, -100%) rotate(0deg);
+        opacity: 0;
+    }
+    60% {
+        transform: translate(-50%, -40%) rotate(180deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-50%, -50%) rotate(360deg);
+        opacity: 1;
+    }
+}
+
+@keyframes industrialGlow {
+    0%, 100% {
+        filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.4)) drop-shadow(0 0 5px rgba(255, 150, 0, 0));
+    }
+    50% {
+        filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.4)) drop-shadow(0 0 10px rgba(255, 150, 0, 0.6));
+    }
+}
+
+@keyframes toxicPulse {
+    0%, 100% {
+        filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.4)) drop-shadow(0 0 5px rgba(0, 255, 0, 0));
+    }
+    50% {
+        filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.4)) drop-shadow(0 0 12px rgba(0, 255, 0, 0.7));
+    }
+}
+
+@keyframes plasticFloat {
+    0%, 100% {
+        transform: translate(-50%, -50%);
+    }
+    50% {
+        transform: translate(-50%, -55%);
+    }
+}
+
+@keyframes miningRumble {
+    0%, 100% {
+        transform: translate(-50%, -50%);
+    }
+    25% {
+        transform: translate(-48%, -50%);
+    }
+    75% {
+        transform: translate(-52%, -50%);
+    }
+}
+
+@keyframes vegetationDie {
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg);
+        filter: grayscale(0%) brightness(1);
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-50%, -50%) rotate(15deg);
+        filter: grayscale(80%) brightness(0.6);
+        opacity: 1;
+    }
+}
+
+@keyframes severeWarningPulse {
+    0%, 100% {
+        transform: translateX(-50%) scale(1);
+    }
+    50% {
+        transform: translateX(-50%) scale(1.05);
+    }
+}
+
+@keyframes warningGradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 200% 50%;
+    }
+}
+
+/* Soil contamination visual overlay */
+.soil-drop-zone::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        to bottom,
+        rgba(100, 80, 60, calc(var(--contamination-level, 0) * 0.3)),
+        rgba(60, 50, 40, calc(var(--contamination-level, 0) * 0.5))
+    );
+    pointer-events: none;
+    z-index: 1;
+    border-radius: var(--radius-lg);
+    transition: background 1s ease-out;
+}
+
+.soil-drop-zone.polluted-1::after {
+    background: linear-gradient(
+        to bottom,
+        rgba(120, 100, 70, 0.2),
+        rgba(80, 60, 40, 0.3)
+    );
+}
+
+.soil-drop-zone.polluted-2::after {
+    background: linear-gradient(
+        to bottom,
+        rgba(140, 90, 60, 0.3),
+        rgba(100, 70, 50, 0.4)
+    );
+}
+
+.soil-drop-zone.polluted-3::after {
+    background: linear-gradient(
+        to bottom,
+        rgba(160, 80, 50, 0.4),
+        rgba(120, 60, 40, 0.5)
+    );
+}
+
+.soil-drop-zone.polluted-4::after {
+    background: linear-gradient(
+        to bottom,
+        rgba(180, 60, 40, 0.5),
+        rgba(140, 40, 30, 0.6)
+    );
+}
+
+.soil-drop-zone.drag-over {
+    box-shadow: 0 0 0 4px var(--color-warning);
+}
+
+.drop-zone-visual {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.soil-svg {
+    width: 100%;
+    height: 100%;
+}
+
+.drop-hint {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(255, 255, 255, 0.95);
+    padding: var(--space-md) var(--space-xl);
+    border-radius: var(--radius-full);
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: var(--color-charcoal);
+    box-shadow: var(--shadow-md);
+    transition: opacity var(--transition-base);
+    z-index: 10;
+}
+
+.drop-hint.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Contamination Meter */
+.contamination-meter {
+    position: absolute;
+    bottom: var(--space-md);
+    left: var(--space-md);
+    right: var(--space-md);
+    background: rgba(255, 255, 255, 0.95);
+    padding: var(--space-md);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+}
+
+.meter-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--color-gray);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.meter-bar {
+    height: 8px;
+    background: var(--color-light-gray);
+    border-radius: var(--radius-full);
+    margin: var(--space-sm) 0;
+    overflow: hidden;
+}
+
+.meter-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, var(--color-warning), var(--color-danger));
+    border-radius: var(--radius-full);
+    transition: width var(--transition-base);
+}
+
+.meter-percentage {
+    font-weight: 700;
+    color: var(--color-danger);
+}
+
+/* Effects Panel */
+.effects-panel {
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    padding: var(--space-lg);
+    box-shadow: var(--shadow-sm);
+}
+
+.effects-panel h3 {
+    font-size: 1rem;
+    color: var(--color-earth-dark);
+    margin-bottom: var(--space-md);
+}
+
+.effects-list {
+    margin-bottom: var(--space-md);
+}
+
+.effects-list li {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-sm) 0;
+    border-bottom: 1px solid var(--color-light-gray);
+    font-size: 0.9rem;
+}
+
+.effects-list li:last-child {
+    border-bottom: none;
+}
+
+.reset-btn {
+    width: 100%;
+    padding: var(--space-sm) var(--space-md);
+    background: var(--color-leaf-green);
+    color: var(--color-white);
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    transition: background var(--transition-fast);
+}
+
+.reset-btn:hover {
+    background: var(--color-moss);
+}
+
+/* Cause Details Cards */
+.cause-details {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-lg);
+}
+
+.detail-card {
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    padding: var(--space-lg);
+    box-shadow: var(--shadow-sm);
+    opacity: 1;
+    transform: scale(1);
+    transition: opacity var(--transition-base), transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.detail-card:hover,
+.detail-card.active {
+    box-shadow: var(--shadow-md);
+    border-left: 4px solid var(--color-primary);
+}
+
+.detail-card h4 {
+    color: var(--color-earth-dark);
+    margin-bottom: var(--space-sm);
+}
+
+.detail-card p {
+    color: var(--color-gray);
+    font-size: 0.9rem;
+    margin-bottom: var(--space-md);
+}
+
+.detail-card ul {
+    font-size: 0.85rem;
+}
+
+.detail-card ul li {
+    position: relative;
+    padding-left: var(--space-md);
+    margin-bottom: var(--space-xs);
+    color: var(--color-dark-gray);
+}
+
+.detail-card ul li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--color-danger);
+}
+
+/* =============================================
+   Consequences Section
+   ============================================= */
+.consequences-section {
+    background: var(--color-white);
+    padding-top: var(--space-xxl);
+    padding-bottom: var(--space-xxl);
+}
+
+/* Ecosystem Diagram */
+.ecosystem-diagram {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    height: 550px;
+    margin: 0 auto var(--space-xl);
+    background: radial-gradient(circle at center, rgba(45, 90, 61, 0.05) 0%, transparent 70%);
+    border-radius: var(--radius-xl);
+}
+
+.ecosystem-element {
+    position: absolute;
+    cursor: pointer;
+    transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.ecosystem-element:hover {
+    transform: scale(1.15);
+}
+
+.ecosystem-element.central {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+}
+
+.ecosystem-element.central:hover {
+    transform: translate(-50%, -50%) scale(1.08);
+}
+
+.ecosystem-element:not(.central) {
+    --radius: 200px;
+    top: calc(50% + var(--radius) * cos(var(--angle)) - 40px);
+    left: calc(50% + var(--radius) * sin(var(--angle)) - 40px);
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    padding: var(--space-sm);
+    box-shadow: var(--shadow-md);
+}
+
+.ecosystem-element:not(.central):hover {
+    box-shadow: var(--shadow-lg);
+}
+
+.element-visual {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ecosystem-element.central .element-visual {
+    width: 140px;
+    height: 140px;
+    background: linear-gradient(135deg, #4A3D30, #3D2B1F);
+    border-radius: 50%;
+    box-shadow: var(--shadow-lg), 0 0 40px rgba(194, 59, 34, 0.3);
+}
+
+.soil-circle {
+    fill: var(--color-soil-polluted);
+    stroke: var(--color-danger);
+    stroke-width: 3;
+}
+
+.element-icon {
+    font-size: 3rem;
+    fill: var(--color-white);
+}
+
+.element-icon-wrapper {
+    width: 80px;
+    height: 80px;
+    background: var(--color-white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    box-shadow: var(--shadow-md);
+    transition: box-shadow var(--transition-base), background var(--transition-base);
+}
+
+.ecosystem-element:hover .element-icon-wrapper {
+    box-shadow: var(--shadow-lg);
+    background: var(--color-leaf-light);
+}
+
+.element-label {
+    display: block;
+    text-align: center;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-earth-dark);
+    margin-top: var(--space-sm);
+    white-space: nowrap;
+}
+
+.connection-line {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 120px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--color-danger), transparent);
+    transform-origin: left center;
+    transform: rotate(calc(var(--angle) + 180deg));
+    opacity: 0.5;
+    z-index: -1;
+}
+
+/* Impact Modal */
+.impact-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity var(--transition-base), visibility var(--transition-base);
+}
+
+.impact-modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    background: var(--color-white);
+    border-radius: var(--radius-xl);
+    max-width: 600px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    padding: var(--space-xl);
+    position: relative;
+    transform: translateY(20px);
+    transition: transform var(--transition-base);
+}
+
+.impact-modal.active .modal-content {
+    transform: translateY(0);
+}
+
+.modal-close {
+    position: absolute;
+    top: var(--space-md);
+    right: var(--space-md);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--color-light-gray);
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background var(--transition-fast);
+}
+
+.modal-close:hover {
+    background: var(--color-gray);
+    color: var(--color-white);
+}
+
+.modal-header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    margin-bottom: var(--space-lg);
+}
+
+.modal-icon {
+    font-size: 3rem;
+}
+
+.modal-title {
+    font-size: 1.75rem;
+    color: var(--color-earth-dark);
+}
+
+.modal-body {
+    color: var(--color-dark-gray);
+    line-height: 1.8;
+}
+
+.modal-body p {
+    margin-bottom: var(--space-md);
+}
+
+.modal-body ul {
+    margin-left: var(--space-md);
+}
+
+.modal-body ul li {
+    position: relative;
+    padding-left: var(--space-md);
+    margin-bottom: var(--space-sm);
+}
+
+.modal-body ul li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--color-danger);
+}
+
+.modal-visual {
+    margin-top: var(--space-lg);
+    padding: var(--space-lg);
+    background: var(--color-light-gray);
+    border-radius: var(--radius-md);
+    text-align: center;
+}
+
+/* Impact Statistics */
+.impact-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--space-lg);
+    margin-top: var(--space-xl);
+}
+
+.impact-stat {
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    padding: var(--space-lg);
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+    transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.impact-stat:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+}
+
+.stat-icon {
+    font-size: 2.5rem;
+    margin-bottom: var(--space-md);
+}
+
+.impact-stat h4 {
+    color: var(--color-earth-dark);
+    margin-bottom: var(--space-sm);
+}
+
+.impact-stat p {
+    color: var(--color-gray);
+    font-size: 0.9rem;
+}
+
+/* =============================================
+   Solutions Section
+   ============================================= */
+.solutions-section {
+    background: var(--color-off-white);
+    padding-top: var(--space-xxl);
+    padding-bottom: var(--space-xxl);
+}
+
+.solutions-simulator {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: var(--space-lg);
+    margin-bottom: var(--space-xl);
+}
+
+.solution-soil-container {
+    position: relative;
+    background: linear-gradient(to bottom, 
+        #87CEEB 0%,
+        #6BB3D0 15%,
+        #6B8E4E 18%,
+        #5D4E37 25%,
+        #4A3D30 50%,
+        #3D2B1F 100%
+    );
+    border-radius: var(--radius-lg);
+    min-height: 450px;
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+}
+
+#solutionCanvas {
+    width: 100%;
+    height: 100%;
+}
+
+.soil-health-indicator {
+    position: absolute;
+    top: var(--space-md);
+    left: var(--space-md);
+    right: var(--space-md);
+    background: rgba(255, 255, 255, 0.95);
+    padding: var(--space-md);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+}
+
+.health-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--color-gray);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.health-bar {
+    height: 12px;
+    background: var(--color-light-gray);
+    border-radius: var(--radius-full);
+    margin: var(--space-sm) 0;
+    overflow: hidden;
+}
+
+.health-fill {
+    height: 100%;
+    width: 10%;
+    background: linear-gradient(90deg, var(--color-danger), var(--color-warning), var(--color-leaf-green));
+    border-radius: var(--radius-full);
+    transition: width var(--transition-slow);
+}
+
+.health-status {
+    font-weight: 700;
+    color: var(--color-danger);
+    transition: color var(--transition-base);
+}
+
+.health-status.recovering {
+    color: var(--color-warning);
+}
+
+.health-status.healthy {
+    color: var(--color-leaf-green);
+}
+
+/* Solution Tools */
+.solution-tools {
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    padding: var(--space-lg);
+    box-shadow: var(--shadow-sm);
+}
+
+.solution-tools h3 {
+    font-size: 1.125rem;
+    color: var(--color-earth-dark);
+    margin-bottom: var(--space-md);
+}
+
+.tools-grid {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-md);
+}
+
+.tool-item {
+    background: var(--color-off-white);
+    border-radius: var(--radius-md);
+    padding: var(--space-md);
+    cursor: grab;
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.tool-item:hover {
+    transform: translateX(4px);
+    box-shadow: var(--shadow-sm);
+}
+
+.tool-item:active {
+    cursor: grabbing;
+}
+
+.tool-item.applied {
+    opacity: 0.4;
+    pointer-events: none;
+    background: var(--color-leaf-light);
+}
+
+.tool-icon {
+    font-size: 1.5rem;
+    margin-bottom: var(--space-xs);
+}
+
+.tool-name {
+    display: block;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--color-earth-dark);
+}
+
+.tool-desc {
+    font-size: 0.75rem;
+    color: var(--color-gray);
+    margin: var(--space-xs) 0;
+}
+
+.tool-effect {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--color-leaf-green);
+    background: rgba(74, 124, 89, 0.1);
+    padding: 2px 8px;
+    border-radius: var(--radius-full);
+}
+
+/* Applied Solutions */
+.applied-solutions {
+    grid-column: 1 / -1;
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    padding: var(--space-lg);
+    box-shadow: var(--shadow-sm);
+}
+
+.applied-solutions h4 {
+    font-size: 1rem;
+    color: var(--color-earth-dark);
+    margin-bottom: var(--space-md);
+}
+
+.applied-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+}
+
+.applied-list li {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    background: rgba(74, 124, 89, 0.1);
+    color: var(--color-leaf-green);
+    padding: var(--space-xs) var(--space-md);
+    border-radius: var(--radius-full);
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+/* Success Stories */
+.success-stories {
+    text-align: center;
+}
+
+.success-stories h3 {
+    font-size: 1.5rem;
+    color: var(--color-charcoal);
+    margin-bottom: var(--space-lg);
+}
+
+.stories-carousel {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-lg);
+}
+
+.story-card {
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    transition: transform var(--transition-base), box-shadow var(--transition-base);
+    border: 1px solid var(--color-light-gray);
+}
+
+.story-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-lg);
+}
+
+.story-image {
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    background-color: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+    position: relative;
+}
+
+.story-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: var(--space-md);
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+}
+
+.story-location {
+    color: var(--color-white);
+    font-size: 0.875rem;
+}
+
+.story-content {
+    padding: var(--space-lg);
+    text-align: left;
+}
+
+.story-content h4 {
+    color: var(--color-charcoal);
+    margin-bottom: var(--space-sm);
+    font-size: 1.1rem;
+}
+
+.story-content p {
+    color: var(--color-gray);
+    font-size: 0.95rem;
+    margin-bottom: var(--space-md);
+    line-height: 1.6;
+}
+
+.story-stat {
+    display: inline-block;
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: var(--color-primary);
+    background: rgba(45, 90, 61, 0.1);
+    padding: var(--space-xs) var(--space-md);
+    border-radius: var(--radius-full);
+}
+
+/* =============================================
+   Action Section
+   ============================================= */
+.action-section {
+    background: var(--color-white);
+    padding-top: var(--space-xxl);
+    padding-bottom: var(--space-xxl);
+}
+
+/* Context Selector */
+.context-selector {
+    max-width: 800px;
+    margin: 0 auto var(--space-xl);
+    background: var(--color-off-white);
+    border-radius: var(--radius-xl);
+    padding: var(--space-xl);
+    box-shadow: var(--shadow-md);
+}
+
+.context-selector h3 {
+    text-align: center;
+    font-size: 1.5rem;
+    color: var(--color-charcoal);
+    margin-bottom: var(--space-lg);
+}
+
+.selector-grid {
+    display: grid;
+    gap: var(--space-lg);
+    margin-bottom: var(--space-lg);
+}
+
+.selector-group label {
+    display: block;
+    font-weight: 600;
+    color: var(--color-charcoal);
+    margin-bottom: var(--space-md);
+    font-size: 1rem;
+}
+
+.selector-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-md);
+}
+
+.selector-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-md) var(--space-lg);
+    background: var(--color-off-white);
+    border: 2px solid transparent;
+    border-radius: var(--radius-lg);
+    transition: all var(--transition-fast);
+}
+
+.selector-btn:hover {
+    background: var(--color-light-gray);
+}
+
+.selector-btn.active {
+    background: rgba(74, 124, 89, 0.1);
+    border-color: var(--color-leaf-green);
+}
+
+.btn-icon {
+    font-size: 2rem;
+}
+
+.btn-label {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--color-dark-gray);
+}
+
+.generate-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-sm);
+    width: 100%;
+    padding: var(--space-md) var(--space-lg);
+    background: var(--color-leaf-green);
+    color: var(--color-white);
+    font-size: 1.125rem;
+    font-weight: 600;
+    border-radius: var(--radius-lg);
+    transition: all var(--transition-base);
+}
+
+.generate-btn:hover:not(:disabled) {
+    background: var(--color-moss);
+    transform: translateY(-2px);
+}
+
+.generate-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.arrow-icon {
+    width: 24px;
+    height: 24px;
+    stroke: currentColor;
+    stroke-width: 2;
+    fill: none;
+}
+
+/* Action Plan */
+.action-plan {
+    max-width: 900px;
+    margin: 0 auto var(--space-xl);
+}
+
+.plan-header {
+    text-align: center;
+    margin-bottom: var(--space-xl);
+}
+
+.plan-header h3 {
+    font-size: 2rem;
+    color: var(--color-earth-dark);
+    margin-bottom: var(--space-sm);
+}
+
+.plan-header p {
+    color: var(--color-gray);
+}
+
+.plan-content {
+    display: grid;
+    gap: var(--space-lg);
+    margin-bottom: var(--space-xl);
+}
+
+.action-category {
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    padding: var(--space-lg);
+    box-shadow: var(--shadow-sm);
+}
+
+.category-header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    margin-bottom: var(--space-md);
+    padding-bottom: var(--space-md);
+    border-bottom: 1px solid var(--color-light-gray);
+}
+
+.category-icon {
+    font-size: 1.5rem;
+}
+
+.category-header h4 {
+    flex: 1;
+    font-size: 1.125rem;
+    color: var(--color-earth-dark);
+}
+
+.category-tag {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--color-leaf-green);
+    background: rgba(74, 124, 89, 0.1);
+    padding: var(--space-xs) var(--space-sm);
+    border-radius: var(--radius-full);
+}
+
+.action-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+}
+
+.action-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-md);
+    padding: var(--space-md);
+    background: var(--color-off-white);
+    border-radius: var(--radius-md);
+    transition: background var(--transition-fast);
+}
+
+.action-list li:hover {
+    background: var(--color-light-gray);
+}
+
+.action-list input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    margin-top: 2px;
+    accent-color: var(--color-leaf-green);
+    cursor: pointer;
+}
+
+.action-list .action-text {
+    flex: 1;
+}
+
+.action-list .action-title {
+    display: block;
+    font-weight: 600;
+    color: var(--color-earth-dark);
+    margin-bottom: var(--space-xs);
+}
+
+.action-list .action-desc {
+    font-size: 0.85rem;
+    color: var(--color-gray);
+}
+
+.action-list li.completed {
+    opacity: 0.6;
+}
+
+.action-list li.completed .action-title {
+    text-decoration: line-through;
+}
+
+/* Progress Tracker */
+.progress-tracker {
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    padding: var(--space-lg);
+    box-shadow: var(--shadow-sm);
+    margin-bottom: var(--space-lg);
+}
+
+.progress-tracker h4 {
+    text-align: center;
+    font-size: 1.125rem;
+    color: var(--color-earth-dark);
+    margin-bottom: var(--space-lg);
+}
+
+.tracker-stats {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-xl);
+    margin-bottom: var(--space-lg);
+}
+
+.tracker-stat {
+    text-align: center;
+}
+
+.tracker-number {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--color-leaf-green);
+}
+
+.tracker-label {
+    font-size: 0.85rem;
+    color: var(--color-gray);
+}
+
+.overall-progress {
+    text-align: center;
+}
+
+.progress-bar {
+    height: 12px;
+    background: var(--color-light-gray);
+    border-radius: var(--radius-full);
+    overflow: hidden;
+    margin-bottom: var(--space-sm);
+}
+
+.progress-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, var(--color-leaf-green), var(--color-leaf-light));
+    border-radius: var(--radius-full);
+    transition: width var(--transition-base);
+}
+
+.progress-text {
+    font-weight: 600;
+    color: var(--color-leaf-green);
+}
+
+/* Plan Actions */
+.plan-actions {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-md);
+}
+
+.action-btn {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-md) var(--space-lg);
+    border-radius: var(--radius-lg);
+    font-weight: 600;
+    transition: all var(--transition-fast);
+}
+
+.action-btn.primary {
+    background: var(--color-leaf-green);
+    color: var(--color-white);
+}
+
+.action-btn.primary:hover {
+    background: var(--color-moss);
+}
+
+.action-btn.secondary {
+    background: var(--color-light-gray);
+    color: var(--color-dark-gray);
+}
+
+.action-btn.secondary:hover {
+    background: var(--color-gray);
+    color: var(--color-white);
+}
+
+.download-icon {
+    width: 20px;
+    height: 20px;
+    stroke: currentColor;
+    stroke-width: 2;
+    fill: none;
+}
+
+/* Community Impact */
+.community-impact {
+    text-align: center;
+    padding: var(--space-xl);
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+    border-radius: var(--radius-xl);
+    color: var(--color-white);
+    margin-top: var(--space-xl);
+}
+
+.community-impact h3 {
+    font-size: 1.75rem;
+    margin-bottom: var(--space-lg);
+    color: var(--color-white);
+}
+
+.impact-counter {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: var(--space-xl);
+}
+
+.counter-item {
+    text-align: center;
+    min-width: 150px;
+}
+
+.counter-number {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--color-accent);
+}
+
+.counter-label {
+    font-size: 0.95rem;
+    opacity: 0.9;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+/* =============================================
+   Footer
+   ============================================= */
+.site-footer {
+    background: linear-gradient(180deg, #2A1F15 0%, #1A1512 100%);
+    color: var(--color-white);
+    padding: var(--space-xl) var(--space-lg);
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: var(--space-xl);
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-bottom: var(--space-lg);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-brand {
+    max-width: 300px;
+}
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: var(--space-md);
+    color: var(--color-white);
+}
+
+.footer-brand p {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.footer-links {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-lg);
+}
+
+.link-group h4 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: var(--space-md);
+    color: var(--color-accent);
+}
+
+.link-group a {
+    display: block;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.875rem;
+    padding: var(--space-xs) 0;
+    transition: color var(--transition-fast);
+}
+
+.link-group a:hover {
+    color: var(--color-white);
+}
+
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-top: var(--space-lg);
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+/* =============================================
+   Responsive Design
+   ============================================= */
+@media (max-width: 1024px) {
+    section {
+        padding: var(--space-xl) var(--space-lg);
+    }
+    
+    .causes-interactive {
+        grid-template-columns: 1fr;
+    }
+    
+    .pollution-sources {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .source-item {
+        flex: 0 0 calc(50% - var(--space-sm));
+    }
+    
+    .effects-panel {
+        order: -1;
+    }
+    
+    .solutions-simulator {
+        grid-template-columns: 1fr;
+    }
+    
+    .ecosystem-diagram {
+        height: 400px;
+    }
+    
+    .ecosystem-element:not(.central) {
+        --radius: 150px;
+    }
+    
+    /* Adjust nav gap for medium screens */
+    .nav-links {
+        gap: var(--space-sm);
+    }
+    
+    .nav-link {
+        font-size: 0.9rem;
+        padding: var(--space-xs);
+    }
+}
+
+@media (max-width: 768px) {
+    .main-nav {
+        padding: var(--space-sm) var(--space-md);
+    }
+    
+    .nav-links {
+        position: fixed;
+        top: 60px;
+        left: 0;
+        right: 0;
+        background: var(--color-white);
+        flex-direction: column;
+        align-items: center;
+        padding: var(--space-lg);
+        gap: var(--space-md);
+        box-shadow: var(--shadow-md);
+        transform: translateY(-100%);
+        opacity: 0;
+        visibility: hidden;
+        transition: all var(--transition-base);
+    }
+    
+    .nav-links.active {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+    }
+    
+    .nav-link {
+        color: var(--color-charcoal);
+        white-space: normal;
+    }
+    
+    .nav-toggle {
+        display: flex;
+    }
+    
+    .hero-stats {
+        flex-direction: column;
+        gap: var(--space-lg);
+    }
+    
+    .stat-number {
+        font-size: 2rem;
+    }
+    
+    .source-item {
+        flex: 1 1 100%;
+    }
+    
+    .ecosystem-diagram {
+        height: 350px;
+    }
+    
+    .ecosystem-element:not(.central) {
+        --radius: 120px;
+    }
+    
+    .element-visual {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .element-icon-wrapper {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+    }
+    
+    .selector-options {
+        justify-content: center;
+    }
+    
+    .selector-btn {
+        flex: 0 0 calc(50% - var(--space-sm));
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .footer-links {
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    .footer-bottom {
+        flex-direction: column;
+        gap: var(--space-sm);
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    html {
+        font-size: 14px;
+    }
+    
+    section {
+        padding: var(--space-lg) var(--space-md);
+    }
+    
+    .hero-title {
+        font-size: 2rem;
+    }
+    
+    .section-title {
+        font-size: 1.75rem;
+    }
+    
+    .ecosystem-diagram {
+        height: 300px;
+    }
+    
+    .ecosystem-element:not(.central) {
+        --radius: 100px;
+    }
+    
+    .ecosystem-element.central .element-visual {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .selector-btn {
+        flex: 1 1 100%;
+    }
+    
+    .tracker-stats {
+        flex-direction: column;
+        gap: var(--space-md);
+    }
+    
+    .plan-actions {
+        flex-direction: column;
+    }
+    
+    .action-btn {
+        justify-content: center;
+    }
+    
+    .footer-links {
+        grid-template-columns: 1fr;
+    }
+}

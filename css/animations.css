@@ -1,0 +1,672 @@
+/* =============================================
+   EcoRoot - Animation Styles
+   ============================================= */
+
+/* Keyframe Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateX(-50%) translateY(0);
+    }
+    40% {
+        transform: translateX(-50%) translateY(-10px);
+    }
+    60% {
+        transform: translateX(-50%) translateY(-5px);
+    }
+}
+
+@keyframes scroll {
+    0% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(12px);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.05);
+        opacity: 0.8;
+    }
+}
+
+@keyframes ripple {
+    0% {
+        transform: scale(0);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+@keyframes shake {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    10%, 30%, 50%, 70%, 90% {
+        transform: translateX(-5px);
+    }
+    20%, 40%, 60%, 80% {
+        transform: translateX(5px);
+    }
+}
+
+@keyframes glow {
+    0%, 100% {
+        box-shadow: 0 0 5px rgba(74, 124, 89, 0.5);
+    }
+    50% {
+        box-shadow: 0 0 20px rgba(74, 124, 89, 0.8);
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes contaminate {
+    0% {
+        background-position: 0% 0%;
+    }
+    100% {
+        background-position: 100% 100%;
+    }
+}
+
+@keyframes grow {
+    0% {
+        transform: scale(0) translateY(20px);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.1) translateY(-5px);
+    }
+    100% {
+        transform: scale(1) translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes wilt {
+    0% {
+        transform: rotate(0deg) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: rotate(15deg) scale(0.8);
+        opacity: 0.5;
+    }
+}
+
+/* Scroll-triggered Animation Classes */
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+/* Section headers should always be visible */
+.section-header.animate-on-scroll {
+    opacity: 1;
+    transform: none;
+}
+
+/* Detail cards should always be visible */
+.detail-card.animate-on-scroll {
+    opacity: 1;
+    transform: none;
+}
+
+.animate-on-scroll.animated {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.animate-on-scroll.from-left {
+    transform: translateX(-40px);
+}
+
+.animate-on-scroll.from-left.animated {
+    transform: translateX(0);
+}
+
+.animate-on-scroll.from-right {
+    transform: translateX(40px);
+}
+
+.animate-on-scroll.from-right.animated {
+    transform: translateX(0);
+}
+
+.animate-on-scroll.scale {
+    transform: scale(0.9);
+}
+
+.animate-on-scroll.scale.animated {
+    transform: scale(1);
+}
+
+/* Staggered Animation Delays */
+.stagger-1 { transition-delay: 0.1s; }
+.stagger-2 { transition-delay: 0.2s; }
+.stagger-3 { transition-delay: 0.3s; }
+.stagger-4 { transition-delay: 0.4s; }
+.stagger-5 { transition-delay: 0.5s; }
+.stagger-6 { transition-delay: 0.6s; }
+
+/* Drag and Drop Visual Feedback */
+.dragging {
+    opacity: 0.5;
+    transform: scale(0.95) rotate(2deg);
+    cursor: grabbing !important;
+}
+
+.drag-over {
+    animation: pulse 0.5s ease infinite;
+}
+
+.drop-success {
+    animation: scaleIn 0.3s ease;
+}
+
+.drop-effect {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(212, 160, 59, 0.6) 0%, transparent 70%);
+    animation: ripple 0.6s ease-out forwards;
+    pointer-events: none;
+}
+
+/* Pollution Effect Animations */
+.pollution-particle {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: var(--color-soil-polluted);
+    border-radius: 50%;
+    opacity: 0;
+    animation: pollute 2s ease-out forwards;
+}
+
+@keyframes pollute {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px) scale(0);
+    }
+    50% {
+        opacity: 1;
+        transform: translateY(0) scale(1.2);
+    }
+    100% {
+        opacity: 0.6;
+        transform: translateY(10px) scale(1);
+    }
+}
+
+/* Recovery/Healing Animations */
+.healing-effect {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: radial-gradient(circle, rgba(74, 124, 89, 0.8) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: heal 1s ease-out forwards;
+}
+
+@keyframes heal {
+    0% {
+        opacity: 0;
+        transform: scale(0);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(2);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(4);
+    }
+}
+
+/* Plant Growing Animation */
+.plant-grow {
+    animation: grow 1s ease-out forwards;
+    transform-origin: bottom center;
+}
+
+.plant-wilt {
+    animation: wilt 0.8s ease-out forwards;
+    transform-origin: bottom center;
+}
+
+/* Connection Line Animations */
+.connection-pulse {
+    animation: connectionPulse 2s ease infinite;
+}
+
+@keyframes connectionPulse {
+    0%, 100% {
+        opacity: 0.3;
+        stroke-dashoffset: 0;
+    }
+    50% {
+        opacity: 0.8;
+        stroke-dashoffset: 20;
+    }
+}
+
+/* Counter Animation */
+.counter-animate {
+    animation: counterPop 0.5s ease;
+}
+
+@keyframes counterPop {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+/* Checkbox Animation */
+.checkbox-check {
+    animation: checkmark 0.3s ease forwards;
+}
+
+@keyframes checkmark {
+    0% {
+        transform: scale(0);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Modal Animations */
+.modal-enter {
+    animation: modalIn 0.3s ease forwards;
+}
+
+@keyframes modalIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.modal-exit {
+    animation: modalOut 0.2s ease forwards;
+}
+
+@keyframes modalOut {
+    from {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(20px) scale(0.95);
+    }
+}
+
+/* Notification Animations */
+.notification-enter {
+    animation: slideInRight 0.3s ease forwards;
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.notification-exit {
+    animation: slideOutRight 0.3s ease forwards;
+}
+
+@keyframes slideOutRight {
+    from {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+}
+
+/* Loading Animations */
+.loading-dots {
+    display: inline-flex;
+    gap: 4px;
+}
+
+.loading-dots span {
+    width: 8px;
+    height: 8px;
+    background: currentColor;
+    border-radius: 50%;
+    animation: loadingDot 1.4s ease infinite;
+}
+
+.loading-dots span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.loading-dots span:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes loadingDot {
+    0%, 80%, 100% {
+        transform: scale(0.6);
+        opacity: 0.5;
+    }
+    40% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Tooltip Animation */
+.tooltip {
+    position: absolute;
+    background: var(--color-charcoal);
+    color: var(--color-white);
+    padding: var(--space-sm) var(--space-md);
+    border-radius: var(--radius-md);
+    font-size: 0.85rem;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(5px);
+    transition: all var(--transition-fast);
+    z-index: 100;
+}
+
+.tooltip::after {
+    content: '';
+    position: absolute;
+    border: 6px solid transparent;
+}
+
+.tooltip.top::after {
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-top-color: var(--color-charcoal);
+}
+
+.tooltip.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* Hover Effects */
+.hover-lift {
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.hover-lift:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+}
+
+.hover-scale {
+    transition: transform var(--transition-fast);
+}
+
+.hover-scale:hover {
+    transform: scale(1.05);
+}
+
+.hover-glow {
+    transition: box-shadow var(--transition-fast);
+}
+
+.hover-glow:hover {
+    animation: glow 1.5s ease infinite;
+}
+
+/* Success/Error State Animations */
+.success-flash {
+    animation: successFlash 0.5s ease;
+}
+
+@keyframes successFlash {
+    0%, 100% {
+        background-color: transparent;
+    }
+    50% {
+        background-color: rgba(74, 124, 89, 0.2);
+    }
+}
+
+.error-shake {
+    animation: shake 0.5s ease;
+}
+
+/* Progress Bar Animations */
+.progress-animate {
+    animation: progressGrow 1s ease forwards;
+}
+
+@keyframes progressGrow {
+    from {
+        width: 0%;
+    }
+}
+
+/* Particle Effects */
+.particle-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    opacity: 0;
+}
+
+.particle.dust {
+    background: rgba(139, 115, 85, 0.6);
+    animation: dustFloat 3s ease-out infinite;
+}
+
+@keyframes dustFloat {
+    0% {
+        opacity: 0;
+        transform: translateY(0) translateX(0);
+    }
+    50% {
+        opacity: 0.8;
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-50px) translateX(20px);
+    }
+}
+
+.particle.leaf {
+    width: 8px;
+    height: 8px;
+    background: var(--color-leaf-green);
+    animation: leafFall 4s ease-out infinite;
+}
+
+@keyframes leafFall {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px) rotate(0deg);
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(100px) rotate(360deg);
+    }
+}
+
+/* Section Transition Animations */
+.section-enter {
+    animation: sectionFadeIn 0.6s ease forwards;
+}
+
+@keyframes sectionFadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Canvas Rendering Helpers */
+.canvas-transition {
+    transition: filter var(--transition-slower);
+}
+
+.canvas-polluted {
+    filter: saturate(0.5) brightness(0.8);
+}
+
+.canvas-healthy {
+    filter: saturate(1.2) brightness(1.1);
+}
+
+/* Print Styles - Disable animations */
+@media print {
+    *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+/* Reduced Motion Preference */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    
+    .scroll-indicator {
+        animation: none;
+    }
+    
+    .wheel {
+        animation: none;
+    }
+}
