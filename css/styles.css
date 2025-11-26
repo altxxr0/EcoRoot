@@ -449,7 +449,7 @@ section {
 /* Scroll Indicator */
 .scroll-indicator {
     position: absolute;
-    bottom: var(--space-md);
+    bottom: calc(var(--space-md) + env(safe-area-inset-bottom, 0px));
     left: 50%;
     transform: translateX(-50%);
     display: flex;
@@ -459,7 +459,8 @@ section {
     color: rgba(255, 255, 255, 0.8);
     font-size: 0.9rem;
     animation: bounce 2s infinite;
-    z-index: 15;
+    z-index: 1002;
+    pointer-events: none;
 }
 
 .scroll-indicator p {
