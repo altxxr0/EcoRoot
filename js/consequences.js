@@ -202,11 +202,18 @@ class ConsequencesSection {
 
         elements.forEach((element, index) => {
             const angle = (index / elements.length) * Math.PI * 2 - Math.PI / 2;
+            
+            // Get element dimensions
+            const elementWidth = element.offsetWidth || 80;
+            const elementHeight = element.offsetHeight || 80;
+            
+            // Calculate position centered on the circle
             const x = centerX + radius * Math.cos(angle);
             const y = centerY + radius * Math.sin(angle);
 
-            element.style.left = `${x - 40}px`;
-            element.style.top = `${y - 50}px`;
+            // Center the element on the calculated position
+            element.style.left = `${x - elementWidth / 2}px`;
+            element.style.top = `${y - elementHeight / 2}px`;
 
             // Update connection line
             const line = element.querySelector('.connection-line');

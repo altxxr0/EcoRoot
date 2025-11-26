@@ -49,13 +49,13 @@
 
   // Map footer links to actions
   const actions = {
-    'Research Papers': () => openPlaceholderModal('Research Papers', 'Curated studies and reports—coming soon.'),
+    'Research Papers': () => openPlaceholderModal('Research Papers', 'Curated studies and reports - coming soon.'),
     'Educational Resources': () => smoothScrollTo('#causes') || openPlaceholderModal('Educational Resources', 'Explore causes and effects on this page.'),
-    'FAQ': () => openPlaceholderModal('FAQ', 'Frequently asked questions—content coming soon.'),
+    'FAQ': () => openPlaceholderModal('FAQ', 'Frequently asked questions - content coming soon.'),
 
     'Volunteer': () => openPlaceholderModal('Volunteer', 'Join local cleanup and restoration efforts.'),
     'Donate': () => openPlaceholderModal('Donate', 'Support trusted soil restoration programs.'),
-    'Partner With Us': () => openPlaceholderModal('Partner With Us', 'Organizations and schools—reach out to collaborate.'),
+    'Partner With Us': () => openPlaceholderModal('Partner With Us', 'Organizations and schools - reach out to collaborate.'),
 
     'Newsletter': () => openPlaceholderModal('Newsletter', 'Get monthly updates. Subscription form coming soon.'),
     'Social Media': () => openPlaceholderModal('Social Media', 'Follow EcoRoot across platforms. Links coming soon.'),

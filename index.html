@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
     <title>EcoRoot - Understanding Soil Pollution</title>
+    
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/animations.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
@@ -128,7 +130,7 @@
                         </div>
                     </div>
                 </div>
-                <button class="causes-reset-btn" id="resetCauses">🔄 Reset Environment</button>
+                <button class="causes-reset-btn" id="resetCauses">🔄 Reset</button>
             </div>
             
             <!-- Environment Visualization Canvas -->
@@ -150,10 +152,7 @@
         </div>
         
         <!-- Interactive Cause Cards -->
-        <div class="cause-cards-hint">
-            <span class="hint-icon">💡</span>
-            <p><strong>Tip:</strong> Hover over (or tap on mobile) each card to reveal detailed impacts</p>
-        </div>
+        <div class="cause-cards-hint">💡 Hover over (or tap on mobile) each card to reveal detailed impacts</div>
         <div class="cause-cards-grid">
             <div class="cause-card" data-cause="deforestation">
                 <div class="cause-card-header">
@@ -267,6 +266,8 @@
             <h2 class="section-title">The Ripple Effect</h2>
             <p class="section-description">Click on different elements to explore how soil pollution spreads through our world</p>
         </div>
+        
+        <div class="ecosystem-hint">💡 Click on any node to learn more about its impact</div>
         
         <div class="ecosystem-diagram" id="ecosystemDiagram">
             <!-- Central Soil Element -->
@@ -428,7 +429,7 @@
                         </div>
                     </div>
                 </div>
-                <button class="solutions-reset-btn" id="resetSolutions">🔄 Reset to Polluted</button>
+                <button class="solutions-reset-btn" id="resetSolutions">🔄 Reset</button>
             </div>
             
             <!-- Restoration Visualization Canvas -->
@@ -450,10 +451,7 @@
         </div>
         
         <!-- Interactive Solution Cards -->
-        <div class="solution-cards-hint">
-            <span class="hint-icon">💡</span>
-            <p><strong>Tip:</strong> Hover over (or tap on mobile) each solution to discover how it helps restore soil health</p>
-        </div>
+        <div class="solution-cards-hint">💡 Hover over (or tap) each solution to discover how it helps restore soil health</div>
         <div class="solution-cards-grid">
             <div class="solution-card" data-solution="phytoremediation">
                 <div class="solution-card-header">
@@ -563,10 +561,7 @@
         <!-- Prevention & Policy Section -->
         <div class="prevention-section">
             <h3>Prevention & Government Policies</h3>
-            <div class="prevention-cards-hint">
-                <span class="hint-icon">💡</span>
-                <p><strong>Tip:</strong> Hover over (or tap on mobile) each policy to see more details</p>
-            </div>
+            <div class="prevention-cards-hint">💡 Hover over (or tap) each policy to see more details</div>
             <div class="prevention-grid">
                 <div class="prevention-card">
                     <div class="prevention-icon">📋</div>
@@ -777,6 +772,237 @@
         </div>
     </section>
 
+    <!-- FAQ Section -->
+    <section id="faq" class="faq-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">05</span>
+                <h2 class="section-title">Frequently Asked Questions</h2>
+                <p class="section-description">Find answers to common questions about soil pollution and what you can do</p>
+            </div>
+
+            <div class="faq-container">
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span class="faq-icon">🌍</span>
+                        <span class="faq-text">What is soil pollution and why should I care?</span>
+                        <span class="faq-toggle">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Soil pollution occurs when harmful substances contaminate the earth's surface, making it toxic for plants, animals, and humans. You should care because soil is the foundation of our food system - 33% of global soil is already degraded, threatening food security for billions. Polluted soil affects the food you eat, the water you drink, and the air you breathe.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span class="faq-icon">🏭</span>
+                        <span class="faq-text">What are the main causes of soil pollution?</span>
+                        <span class="faq-toggle">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>The primary causes include:</p>
+                        <ul>
+                            <li><strong>Industrial waste:</strong> Toxic chemicals from factories seep into soil</li>
+                            <li><strong>Agricultural chemicals:</strong> Pesticides and fertilizers accumulate over time</li>
+                            <li><strong>Improper waste disposal:</strong> Garbage and hazardous materials contaminate land</li>
+                            <li><strong>Mining operations:</strong> Heavy metals and acid runoff damage soil structure</li>
+                            <li><strong>Plastic waste:</strong> Microplastics infiltrate soil ecosystems</li>
+                            <li><strong>Deforestation:</strong> Removes protective cover, exposing soil to erosion</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span class="faq-icon">⚠️</span>
+                        <span class="faq-text">How does soil pollution affect human health?</span>
+                        <span class="faq-toggle">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Soil pollution poses serious health risks through multiple pathways:</p>
+                        <ul>
+                            <li><strong>Food contamination:</strong> Crops absorb toxins from polluted soil, entering our food chain</li>
+                            <li><strong>Water contamination:</strong> Pollutants leach into groundwater, affecting drinking supplies</li>
+                            <li><strong>Air quality:</strong> Dust from contaminated soil carries harmful particles</li>
+                            <li><strong>Direct exposure:</strong> Children playing in contaminated areas face immediate risks</li>
+                        </ul>
+                        <p>Health effects include respiratory problems, skin diseases, neurological disorders, and increased cancer risk.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span class="faq-icon">🌱</span>
+                        <span class="faq-text">Can polluted soil be restored?</span>
+                        <span class="faq-toggle">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes! Soil restoration is possible through several proven methods:</p>
+                        <ul>
+                            <li><strong>Phytoremediation:</strong> Using plants to absorb and break down contaminants</li>
+                            <li><strong>Bioremediation:</strong> Microorganisms naturally decompose pollutants</li>
+                            <li><strong>Soil amendments:</strong> Adding organic matter to improve soil health</li>
+                            <li><strong>Crop rotation:</strong> Alternating crops to restore nutrient balance</li>
+                            <li><strong>Cover cropping:</strong> Protecting soil and adding beneficial nutrients</li>
+                        </ul>
+                        <p>While restoration takes time (often 5-20 years), many contaminated sites have been successfully rehabilitated.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span class="faq-icon">🏡</span>
+                        <span class="faq-text">What can I do as a homeowner to prevent soil pollution?</span>
+                        <span class="faq-toggle">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Every homeowner can make a difference:</p>
+                        <ul>
+                            <li><strong>Use organic alternatives:</strong> Replace chemical fertilizers and pesticides with natural options</li>
+                            <li><strong>Compost organic waste:</strong> Create nutrient-rich soil naturally</li>
+                            <li><strong>Proper disposal:</strong> Never dump chemicals, paint, or batteries on the ground</li>
+                            <li><strong>Test your soil:</strong> Know what's in your soil before making changes</li>
+                            <li><strong>Plant native species:</strong> They require fewer chemicals to thrive</li>
+                            <li><strong>Create buffer zones:</strong> Protect water sources with vegetation</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span class="faq-icon">🚜</span>
+                        <span class="faq-text">How can farmers practice sustainable agriculture?</span>
+                        <span class="faq-toggle">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Sustainable farming practices protect soil while maintaining productivity:</p>
+                        <ul>
+                            <li><strong>Precision agriculture:</strong> Use only necessary amounts of inputs</li>
+                            <li><strong>No-till farming:</strong> Minimize soil disturbance to preserve structure</li>
+                            <li><strong>Integrated pest management:</strong> Reduce chemical pesticide dependency</li>
+                            <li><strong>Crop diversification:</strong> Rotate crops to maintain soil health</li>
+                            <li><strong>Organic certification:</strong> Follow standards that protect soil</li>
+                            <li><strong>Agroforestry:</strong> Integrate trees to prevent erosion</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span class="faq-icon">🔬</span>
+                        <span class="faq-text">How do I test my soil for contamination?</span>
+                        <span class="faq-toggle">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Testing your soil is simple and essential:</p>
+                        <ol>
+                            <li><strong>Home test kits:</strong> Available at garden centers for basic pH and nutrient testing</li>
+                            <li><strong>Professional laboratory testing:</strong> More comprehensive analysis for heavy metals and contaminants</li>
+                            <li><strong>Extension services:</strong> Many universities offer affordable soil testing</li>
+                            <li><strong>What to test for:</strong> pH levels, heavy metals (lead, arsenic), nutrients, and organic matter</li>
+                        </ol>
+                        <p>Test especially if your property is near industrial areas, was previously farmland, or has old painted structures.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span class="faq-icon">💼</span>
+                        <span class="faq-text">What are businesses doing to reduce soil pollution?</span>
+                        <span class="faq-toggle">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Progressive businesses are taking multiple approaches:</p>
+                        <ul>
+                            <li><strong>Waste reduction:</strong> Minimizing industrial waste at the source</li>
+                            <li><strong>Closed-loop systems:</strong> Recycling and reusing materials to prevent disposal</li>
+                            <li><strong>Green infrastructure:</strong> Installing permeable surfaces and rain gardens</li>
+                            <li><strong>Sustainable supply chains:</strong> Sourcing from environmentally responsible suppliers</li>
+                            <li><strong>Site remediation:</strong> Cleaning up contaminated properties</li>
+                            <li><strong>ISO 14001 certification:</strong> Following environmental management standards</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span class="faq-icon">📚</span>
+                        <span class="faq-text">How can students get involved in soil conservation?</span>
+                        <span class="faq-toggle">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Students have powerful voices and can make real impact:</p>
+                        <ul>
+                            <li><strong>Start a school garden:</strong> Learn by doing while growing healthy food</li>
+                            <li><strong>Organize cleanup events:</strong> Remove trash before it contaminates soil</li>
+                            <li><strong>Raise awareness:</strong> Educate peers through presentations and social media</li>
+                            <li><strong>Participate in citizen science:</strong> Contribute to soil monitoring projects</li>
+                            <li><strong>Advocate for policy:</strong> Encourage schools to adopt sustainable practices</li>
+                            <li><strong>Join environmental clubs:</strong> Collaborate on conservation initiatives</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span class="faq-icon">🌎</span>
+                        <span class="faq-text">What is being done globally to address soil pollution?</span>
+                        <span class="faq-toggle">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>International efforts are accelerating:</p>
+                        <ul>
+                            <li><strong>UN Sustainable Development Goals:</strong> Goal 15 focuses on sustainable land management</li>
+                            <li><strong>Global Soil Partnership:</strong> 89 countries working together on soil health</li>
+                            <li><strong>International treaties:</strong> Regulations limiting harmful chemical use</li>
+                            <li><strong>Restoration projects:</strong> Over 2,341 hectares already restored worldwide</li>
+                            <li><strong>Research funding:</strong> Billions invested in soil science and remediation technology</li>
+                            <li><strong>Policy frameworks:</strong> Countries implementing stricter environmental laws</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span class="faq-icon">⏰</span>
+                        <span class="faq-text">How urgent is the soil pollution crisis?</span>
+                        <span class="faq-toggle">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Extremely urgent. Here's why:</p>
+                        <ul>
+                            <li><strong>33% of global soil</strong> is already degraded</li>
+                            <li><strong>95% of our food</strong> comes from soil</li>
+                            <li><strong>52 billion tons</strong> of soil are eroded annually</li>
+                            <li><strong>By 2050:</strong> Soil degradation could reduce global food production by 10%</li>
+                            <li><strong>Irreversible damage:</strong> Some contamination can last centuries without intervention</li>
+                        </ul>
+                        <p>However, the good news is that 15,847 people are already taking action, and every individual effort counts toward healing our planet.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span class="faq-icon">💡</span>
+                        <span class="faq-text">Where can I learn more or get involved?</span>
+                        <span class="faq-toggle">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>We're here to help you take action:</p>
+                        <ul>
+                            <li><strong>Action Plan Generator:</strong> Visit our "Take Action" section for a personalized plan based on your role and location</li>
+                            <li><strong>Join our team:</strong> Contact our founders Cyrus Leyros or Jovohn through the links in the footer</li>
+                            <li><strong>Track progress:</strong> Monitor your impact score as you complete action items</li>
+                            <li><strong>Share knowledge:</strong> Use our educational resources to spread awareness</li>
+                            <li><strong>Stay updated:</strong> Follow our social media for the latest in soil conservation</li>
+                        </ul>
+                        <p>Remember: Together, we can heal our planet! 🌍</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer class="site-footer">
         <div class="footer-content">
@@ -789,25 +1015,46 @@
                     <h4>Learn More</h4>
                     <a href="#">Research Papers</a>
                     <a href="#">Educational Resources</a>
-                    <a href="#">FAQ</a>
+                    <a href="#faq">FAQ</a>
                 </div>
-                <div class="link-group">
-                    <h4>Get Involved</h4>
-                    <a href="#">Volunteer</a>
-                    <a href="#">Donate</a>
-                    <a href="#">Partner With Us</a>
-                </div>
-                <div class="link-group">
-                    <h4>Connect</h4>
-                    <a href="#">Newsletter</a>
-                    <a href="#">Social Media</a>
-                    <a href="#">Contact</a>
+                <div class="link-group volunteer-section">
+                    <h4>🌟 Join Our Team</h4>
+                    <p class="volunteer-tagline">Ready to make an impact?</p>
+                    <p class="volunteer-cta">Let's grow together! 🌱</p>
+                    <div class="team-cards">
+                        <div class="team-member-card">
+                            <img src="https://scontent-mnl3-1.xx.fbcdn.net/v/t39.30808-1/586534455_1392605592253920_3143913500814174581_n.jpg?stp=dst-jpg_s200x200_tt6&ccb=1-7&_nc_sid=e99d92&_nc_eui2=AeGBnk586LwGDYJXKoFhYE3-WOdmKYv4u0pY52Ypi_i7Sov53f_MSB4-b_ZwNxHCszeqVCl7ZexxpAnOPK-UhcVm&_nc_ohc=-FL07gb0FSUQ7kNvwE6Re3C&_nc_oc=AdkzskKLK7N0CANUCrJqu3anmaG0AbRpk3HWAMImbXJ508Jpnh6yvY66ZeE0pPcKarhtL6HMw4nSZlg7CZFBunvB&_nc_zt=24&_nc_ht=scontent-mnl3-1.xx&_nc_gid=Ysrjtu3T7wMPzbsp8DbFTQ&oh=00_AfhpYuJOXQEp_7UHTP-deIjJ7p47MCT_Q1SeSJQS3VHUhg&oe=692CC2EA" alt="Cyrus Leyros" class="member-avatar member-photo">
+                            <div class="member-info">
+                                <strong class="member-name">Cyrus Leyros</strong>
+                                <span class="member-role">Founder</span>
+                                <a href="https://www.facebook.com/SairusLeyros/" target="_blank" rel="noopener noreferrer" class="member-social">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                                    </svg>
+                                    Connect
+                                </a>
+                            </div>
+                        </div>
+                        <div class="team-member-card">
+                            <img src="https://scontent-mnl3-2.xx.fbcdn.net/v/t39.30808-6/492136314_562925340156514_8004729869268184074_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeGU93ZTsQxMDS-CoxhfIWA3raMQJgJke-KtoxAmAmR74pY_u8pwBuvb8j2LwTyrkFK330oaq1Wo7dXlY2eTq8Wr&_nc_ohc=VlzeTfxxrlAQ7kNvwGSyKpI&_nc_oc=AdlR9PBjdkhvDNktn2ouBlbH9dsNN67rJ3FrJeJh1CIi06BFtcyla-L7O1WTT1SwZWI_Rb4nwgm-HiljAP5NtA7e&_nc_zt=23&_nc_ht=scontent-mnl3-2.xx&_nc_gid=Liz9U3vcJPRgqB-4E3ypsg&oh=00_AfgcgGFvsYQj3Hombldz40l6PnOhZn_WkvwnUDHdpN-W4Q&oe=692CB2E8" alt="Jovohn Faulve" class="member-avatar member-photo">
+                            <div class="member-info">                            <link rel="icon" type="image/x-icon" href="favicon.ico">
+                                <strong class="member-name">Jovohn Faulve</strong>
+                                <span class="member-role">Co-Founder & Head Developer</span>
+                                <a href="https://www.facebook.com/jpfaulveofficial/" target="_blank" rel="noopener noreferrer" class="member-social">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                                    </svg>
+                                    Connect
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="footer-bottom">
             <div class="footer-banner">
-                <img src="images/addimage.png" alt="EcoRoot footer illustration" id="siteFooterImage" />
+                <p class="footer-company">FaulveCorps OPC</p>
             </div>
             <p>&copy; 2025 EcoRoot. All rights reserved.</p>
             <p>Built with 💚 for our planet</p>
@@ -822,6 +1069,7 @@
     <script src="js/impactCycler.js"></script>
     <script src="js/solutions.js"></script>
     <script src="js/action.js"></script>
+    <script src="js/faq.js"></script>
     <script src="js/main.js"></script>
     <script src="js/footer.js"></script>
 </body>
