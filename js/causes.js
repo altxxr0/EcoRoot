@@ -950,4 +950,21 @@ class CausesSection {
 // Initialize when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
     window.causesSection = new CausesSection();
+    
+    // Add interactive card toggle functionality for cause cards
+    const causeCards = document.querySelectorAll('.cause-card');
+    causeCards.forEach(card => {
+        card.addEventListener('click', () => {
+            // Toggle expanded state
+            const isExpanded = card.classList.contains('expanded');
+            
+            // Close other cards
+            causeCards.forEach(c => c.classList.remove('expanded'));
+            
+            // Toggle current card
+            if (!isExpanded) {
+                card.classList.add('expanded');
+            }
+        });
+    });
 });

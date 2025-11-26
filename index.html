@@ -149,61 +149,108 @@
             </div>
         </div>
         
-        <!-- Detailed Cause Information -->
-        <div class="cause-details" id="causeDetails">
-            <div class="detail-card" data-cause="deforestation">
-                <h4>Deforestation</h4>
-                <p>Removing trees exposes soil to erosion, removing the natural protection and nutrients that forests provide to the land.</p>
-                <ul>
-                    <li>Exposed soil loses nutrients and organic matter rapidly</li>
-                    <li>Increases risk of landslides and flooding</li>
-                    <li>Destroys habitats for soil organisms</li>
-                </ul>
+        <!-- Interactive Cause Cards -->
+        <div class="cause-cards-grid">
+            <div class="cause-card" data-cause="deforestation">
+                <div class="cause-card-header">
+                    <span class="cause-icon">🌲</span>
+                    <h4>Deforestation</h4>
+                    <span class="expand-icon">+</span>
+                </div>
+                <p class="cause-tagline">Trees removed, soil exposed</p>
+                <div class="cause-card-content">
+                    <div class="cause-visual">🌳→⛏️→💨</div>
+                    <ul class="cause-impacts">
+                        <li>Rapid nutrient loss</li>
+                        <li>Risk of landslides</li>
+                        <li>Habitat destruction</li>
+                    </ul>
+                </div>
             </div>
-            <div class="detail-card" data-cause="mining">
-                <h4>Mining Activities</h4>
-                <p>Mining operations expose sulfide minerals that react with air and water, creating acid mine drainage that devastates surrounding ecosystems.</p>
-                <ul>
-                    <li>Acid drainage can continue for centuries after mines close</li>
-                    <li>Heavy metals concentrate in agricultural areas</li>
-                    <li>Destroys aquatic life for miles downstream</li>
-                </ul>
+            
+            <div class="cause-card" data-cause="mining">
+                <div class="cause-card-header">
+                    <span class="cause-icon">⛏️</span>
+                    <h4>Mining Runoff</h4>
+                    <span class="expand-icon">+</span>
+                </div>
+                <p class="cause-tagline">Acid & heavy metals seep out</p>
+                <div class="cause-card-content">
+                    <div class="cause-visual">⛰️→💧→☠️</div>
+                    <ul class="cause-impacts">
+                        <li>Centuries of acid drainage</li>
+                        <li>Heavy metal buildup</li>
+                        <li>Aquatic life destruction</li>
+                    </ul>
+                </div>
             </div>
-            <div class="detail-card" data-cause="industrial">
-                <h4>Industrial Waste</h4>
-                <p>Factories release heavy metals like lead, mercury, and cadmium into the soil through improper disposal. These toxins can persist for centuries.</p>
-                <ul>
-                    <li>Lead exposure affects 800+ million children globally</li>
-                    <li>Heavy metals bioaccumulate in food chains</li>
-                    <li>Groundwater contamination spreads pollution for miles</li>
-                </ul>
+            
+            <div class="cause-card" data-cause="industrial">
+                <div class="cause-card-header">
+                    <span class="cause-icon">🏭</span>
+                    <h4>Industrial Waste</h4>
+                    <span class="expand-icon">+</span>
+                </div>
+                <p class="cause-tagline">Toxic factory chemicals</p>
+                <div class="cause-card-content">
+                    <div class="cause-visual">🏭→🧪→💀</div>
+                    <ul class="cause-impacts">
+                        <li>800M+ children exposed to lead</li>
+                        <li>Food chain contamination</li>
+                        <li>Groundwater pollution</li>
+                    </ul>
+                </div>
             </div>
-            <div class="detail-card" data-cause="pesticides">
-                <h4>Pesticides & Chemical Fertilizers</h4>
-                <p>Agricultural chemicals designed to kill pests don't discriminate - they destroy beneficial soil organisms essential for healthy ecosystems.</p>
-                <ul>
-                    <li>5.6 billion pounds of pesticides used annually worldwide</li>
-                    <li>Causes chemical buildup that harms soil organisms</li>
-                    <li>Kills earthworms, beneficial bacteria, and fungi</li>
-                </ul>
+            
+            <div class="cause-card" data-cause="pesticides">
+                <div class="cause-card-header">
+                    <span class="cause-icon">🧪</span>
+                    <h4>Pesticides</h4>
+                    <span class="expand-icon">+</span>
+                </div>
+                <p class="cause-tagline">Chemicals kill soil life</p>
+                <div class="cause-card-content">
+                    <div class="cause-visual">🌾→💉→🪱</div>
+                    <ul class="cause-impacts">
+                        <li>5.6B lbs used yearly</li>
+                        <li>Chemical buildup</li>
+                        <li>Kills beneficial organisms</li>
+                    </ul>
+                </div>
             </div>
-            <div class="detail-card" data-cause="waste">
-                <h4>Improper Waste Disposal</h4>
-                <p>When garbage is not properly disposed of, harmful substances leach into the soil. This includes household waste, electronic waste, and hazardous materials.</p>
-                <ul>
-                    <li>Adds toxic chemicals and heavy metals to soil</li>
-                    <li>Contaminates groundwater through seepage</li>
-                    <li>Creates breeding grounds for disease-carrying pests</li>
-                </ul>
+            
+            <div class="cause-card" data-cause="waste">
+                <div class="cause-card-header">
+                    <span class="cause-icon">🗑️</span>
+                    <h4>Improper Waste</h4>
+                    <span class="expand-icon">+</span>
+                </div>
+                <p class="cause-tagline">Garbage contaminates land</p>
+                <div class="cause-card-content">
+                    <div class="cause-visual">🗑️→💧→🌍</div>
+                    <ul class="cause-impacts">
+                        <li>Toxic chemical leaching</li>
+                        <li>Groundwater seepage</li>
+                        <li>Disease vector breeding</li>
+                    </ul>
+                </div>
             </div>
-            <div class="detail-card" data-cause="plastic">
-                <h4>Plastic Pollution</h4>
-                <p>Plastic breaks down into microplastics that infiltrate every layer of soil, disrupting nutrient cycles and harming soil organisms.</p>
-                <ul>
-                    <li>Microplastics found in 90% of tested agricultural soils</li>
-                    <li>Takes 400+ years to decompose</li>
-                    <li>Leaches harmful additives into groundwater</li>
-                </ul>
+            
+            <div class="cause-card" data-cause="plastic">
+                <div class="cause-card-header">
+                    <span class="cause-icon">🛢️</span>
+                    <h4>Plastic Waste</h4>
+                    <span class="expand-icon">+</span>
+                </div>
+                <p class="cause-tagline">Microplastics infiltrate soil</p>
+                <div class="cause-card-content">
+                    <div class="cause-visual">🛢️→🔬→🌱</div>
+                    <ul class="cause-impacts">
+                        <li>In 90% of agricultural soils</li>
+                        <li>400+ year decomposition</li>
+                        <li>Toxic additive leaching</li>
+                    </ul>
+                </div>
             </div>
         </div>
         </div>
@@ -301,71 +348,47 @@
             <div class="impact-stat">
                 <div class="stat-icon">🌱</div>
                 <h4>Plant Damage</h4>
-                <p>Plants in polluted soil grow poorly, look dull and unhealthy, and seeds may not sprout properly or die early</p>
+                <p><strong>Stunted • Discolored • Seed loss</strong></p>
             </div>
             <div class="impact-stat">
                 <div class="stat-icon">🍽️</div>
                 <h4>Food Contamination</h4>
-                <p>Crops grown in polluted soil contain harmful substances that can cause poisoning when eaten</p>
+                <p><strong>Toxins enter food chain</strong></p>
             </div>
             <div class="impact-stat">
                 <div class="stat-icon">🏥</div>
                 <h4>Health Crisis</h4>
-                <p>Contact with polluted soil causes skin infections, respiratory problems, and diseases - children and farmers are most at risk</p>
+                <p><strong>Exposure → Infection & illness</strong></p>
             </div>
             <div class="impact-stat">
                 <div class="stat-icon">🐾</div>
                 <h4>Wildlife Impact</h4>
-                <p>Animals in polluted areas may migrate or die due to contamination of their food and habitat</p>
+                <p><strong>Habitat collapse • Migration • Die‑off</strong></p>
             </div>
             <div class="impact-stat">
                 <div class="stat-icon">💧</div>
                 <h4>Water Contamination</h4>
-                <p>Pollutants seep through soil and contaminate groundwater and nearby water sources</p>
+                <p><strong>Leaching poisons groundwater</strong></p>
             </div>
             <div class="impact-stat">
                 <div class="stat-icon">🌫️</div>
                 <h4>Air Quality</h4>
-                <p>Polluted soil releases harmful gases and dust particles that affect the air we breathe</p>
+                <p><strong>Dust & gases degrade air</strong></p>
             </div>
         </div>
         
-        <!-- Detailed Effects Section -->
-        <div class="effects-details">
-            <h3>Understanding the Full Impact</h3>
-            <div class="effects-grid">
-                <div class="effect-card">
-                    <h4>🌾 Effects on Plants & Crops</h4>
-                    <ul>
-                        <li>Plants may die or grow poorly in polluted soil</li>
-                        <li>Weakened plants with slow growth</li>
-                        <li>Plants look dull and unhealthy in color</li>
-                        <li>Seeds may not sprout properly or die early</li>
-                        <li>Soil loses natural nutrients needed for plant growth</li>
-                        <li>Food grown in polluted soil contains harmful substances</li>
-                    </ul>
+        <!-- Automated Impact Cycling Visualization -->
+        <div class="impact-cycler" id="impactCycler">
+            <div class="impact-canvas-wrapper">
+                <div class="impact-canvas-stack">
+                    <canvas id="impactCanvas" width="600" height="300"></canvas>
+                    <canvas id="impactCanvasNext"></canvas>
                 </div>
-                <div class="effect-card">
-                    <h4>👤 Effects on Human Health</h4>
-                    <ul>
-                        <li>Skin diseases and infections from soil contact</li>
-                        <li>Respiratory problems from contaminated dust</li>
-                        <li>Food poisoning from eating contaminated crops</li>
-                        <li>Children and farmers are most at risk</li>
-                        <li>Can spread germs and cause toxic exposure</li>
-                        <li>Long-term exposure linked to serious diseases</li>
-                    </ul>
-                </div>
-                <div class="effect-card">
-                    <h4>🌍 Effects on Environment</h4>
-                    <ul>
-                        <li>Loss of soil fertility and biodiversity</li>
-                        <li>Damaged ecosystems that can't recover</li>
-                        <li>Water contamination through seepage</li>
-                        <li>Harmful gases and dust released into air</li>
-                        <li>Animals migrate or die due to contamination</li>
-                        <li>Reduced natural minerals and microorganisms in soil</li>
-                    </ul>
+                <div class="impact-cycle-overlay">
+                    <div class="impact-cycle-icon" id="impactCycleIcon">🌾</div>
+                    <h4 class="impact-cycle-title" id="impactCycleTitle">Effects on Plants & Crops</h4>
+                    <ul class="impact-cycle-list" id="impactCycleList"></ul>
+                    <div class="impact-cycle-progress"><div class="impact-cycle-bar" id="impactCycleBar"></div></div>
                 </div>
             </div>
         </div>
@@ -450,106 +473,112 @@
             </div>
         </div>
         
-        <!-- Detailed Solution Information -->
-        <div class="solution-details" id="solutionDetails">
-            <div class="detail-card" data-solution="phytoremediation">
-                <h4>Phytoremediation</h4>
-                <p>Uses plants like sunflowers and mustard greens to absorb heavy metals and toxins from contaminated soil.</p>
-                <ul>
-                    <li>Plants accumulate pollutants in their tissues</li>
-                    <li>Cost-effective for large contaminated areas</li>
-                    <li>Also improves soil structure and biodiversity</li>
-                </ul>
+        <!-- Interactive Solution Cards -->
+        <div class="solution-cards-grid">
+            <div class="solution-card" data-solution="phytoremediation">
+                <div class="solution-card-header">
+                    <span class="solution-icon">🌻</span>
+                    <h4>Phytoremediation</h4>
+                    <span class="expand-icon">+</span>
+                </div>
+                <p class="solution-tagline">Plants absorb heavy metals and toxins</p>
+                <div class="solution-card-content">
+                    <div class="solution-visual">🌱→🧪→✨</div>
+                    <ul class="solution-benefits">
+                        <li>Plants accumulate pollutants</li>
+                        <li>Cost-effective cleanup</li>
+                        <li>Improves biodiversity</li>
+                    </ul>
+                </div>
             </div>
-            <div class="detail-card" data-solution="composting">
-                <h4>Composting</h4>
-                <p>Turns organic waste into nutrient-rich fertilizer that replenishes soil and reduces landfill waste.</p>
-                <ul>
-                    <li>Reduces methane emissions from landfills</li>
-                    <li>Adds beneficial microorganisms to soil</li>
-                    <li>Improves soil water retention capacity</li>
-                </ul>
+            
+            <div class="solution-card" data-solution="composting">
+                <div class="solution-card-header">
+                    <span class="solution-icon">🍂</span>
+                    <h4>Composting</h4>
+                    <span class="expand-icon">+</span>
+                </div>
+                <p class="solution-tagline">Organic waste becomes natural fertilizer</p>
+                <div class="solution-card-content">
+                    <div class="solution-visual">🗑️→🍂→🌱</div>
+                    <ul class="solution-benefits">
+                        <li>Reduces methane emissions</li>
+                        <li>Adds microorganisms</li>
+                        <li>Improves water retention</li>
+                    </ul>
+                </div>
             </div>
-            <div class="detail-card" data-solution="bioremediation">
-                <h4>Bioremediation</h4>
-                <p>Uses microorganisms like bacteria and fungi to break down and consume toxic pollutants in contaminated soil.</p>
-                <ul>
-                    <li>Natural, cost-effective cleanup method</li>
-                    <li>Breaks down organic pollutants completely</li>
-                    <li>Works on oil, pesticides, and heavy metals</li>
-                </ul>
+            
+            <div class="solution-card" data-solution="bioremediation">
+                <div class="solution-card-header">
+                    <span class="solution-icon">🦠</span>
+                    <h4>Bioremediation</h4>
+                    <span class="expand-icon">+</span>
+                </div>
+                <p class="solution-tagline">Microorganisms consume pollutants</p>
+                <div class="solution-card-content">
+                    <div class="solution-visual">🦠→💧→🌍</div>
+                    <ul class="solution-benefits">
+                        <li>Natural cleanup method</li>
+                        <li>Complete breakdown</li>
+                        <li>Works on oil & pesticides</li>
+                    </ul>
+                </div>
             </div>
-            <div class="detail-card" data-solution="recycling">
-                <h4>Recycling Programs</h4>
-                <p>Reduces the amount of waste that ends up in landfills and soil by reusing materials.</p>
-                <ul>
-                    <li>Prevents toxic e-waste contamination</li>
-                    <li>Reduces need for raw material extraction</li>
-                    <li>Saves energy and reduces pollution</li>
-                </ul>
+            
+            <div class="solution-card" data-solution="recycling">
+                <div class="solution-card-header">
+                    <span class="solution-icon">♻️</span>
+                    <h4>Recycling</h4>
+                    <span class="expand-icon">+</span>
+                </div>
+                <p class="solution-tagline">Reuse materials, reduce waste</p>
+                <div class="solution-card-content">
+                    <div class="solution-visual">📦→♻️→🆕</div>
+                    <ul class="solution-benefits">
+                        <li>Prevents e-waste contamination</li>
+                        <li>Reduces raw material need</li>
+                        <li>Saves energy</li>
+                    </ul>
+                </div>
             </div>
-            <div class="detail-card" data-solution="segregation">
-                <h4>Waste Segregation</h4>
-                <p>Separating waste at source ensures hazardous materials don't contaminate regular waste and soil.</p>
-                <ul>
-                    <li>Prevents mixing of toxic and organic waste</li>
-                    <li>Enables proper disposal of hazardous materials</li>
-                    <li>Makes recycling more efficient</li>
-                </ul>
+            
+            <div class="solution-card" data-solution="segregation">
+                <div class="solution-card-header">
+                    <span class="solution-icon">🗂️</span>
+                    <h4>Waste Segregation</h4>
+                    <span class="expand-icon">+</span>
+                </div>
+                <p class="solution-tagline">Separate waste at source</p>
+                <div class="solution-card-content">
+                    <div class="solution-visual">🗑️→🗂️→✅</div>
+                    <ul class="solution-benefits">
+                        <li>Prevents toxic mixing</li>
+                        <li>Proper hazmat disposal</li>
+                        <li>Efficient recycling</li>
+                    </ul>
+                </div>
             </div>
-            <div class="detail-card" data-solution="covercrops">
-                <h4>Cover Crops</h4>
-                <p>Plants grown specifically to protect and improve soil between main crop seasons.</p>
-                <ul>
-                    <li>Prevents erosion from wind and rain</li>
-                    <li>Adds organic matter when plowed under</li>
-                    <li>Reduces need for chemical fertilizers</li>
-                </ul>
+            
+            <div class="solution-card" data-solution="covercrops">
+                <div class="solution-card-header">
+                    <span class="solution-icon">🌿</span>
+                    <h4>Cover Crops</h4>
+                    <span class="expand-icon">+</span>
+                </div>
+                <p class="solution-tagline">Protect soil between seasons</p>
+                <div class="solution-card-content">
+                    <div class="solution-visual">🌾→🛡️→🌱</div>
+                    <ul class="solution-benefits">
+                        <li>Prevents erosion</li>
+                        <li>Adds organic matter</li>
+                        <li>Reduces chemical fertilizers</li>
+                    </ul>
+                </div>
             </div>
         </div>
         
-        <!-- Success Stories -->
-        <div class="success-stories">
-            <h3>Real-World Success Stories</h3>
-            <div class="stories-carousel">
-                <div class="story-card">
-                    <div class="story-image" style="background-image: url('images/success-1.jpg');">
-                        <div class="story-overlay">
-                            <span class="story-location">📍 Chattanooga, USA</span>
-                        </div>
-                    </div>
-                    <div class="story-content">
-                        <h4>Industrial Site Revival</h4>
-                        <p>Former industrial wasteland transformed into thriving urban farm using phytoremediation techniques.</p>
-                        <span class="story-stat">98% reduction in lead levels</span>
-                    </div>
-                </div>
-                <div class="story-card">
-                    <div class="story-image" style="background-image: url('images/success-2.jpg');">
-                        <div class="story-overlay">
-                            <span class="story-location">📍 Netherlands</span>
-                        </div>
-                    </div>
-                    <div class="story-content">
-                        <h4>Agricultural Recovery</h4>
-                        <p>Decades of pesticide use reversed through comprehensive soil rehabilitation program.</p>
-                        <span class="story-stat">200% increase in crop yield</span>
-                    </div>
-                </div>
-                <div class="story-card">
-                    <div class="story-image" style="background-image: url('images/success-3.jpg');">
-                        <div class="story-overlay">
-                            <span class="story-location">📍 Japan</span>
-                        </div>
-                    </div>
-                    <div class="story-content">
-                        <h4>Community Restoration</h4>
-                        <p>Local communities restored contaminated rice paddies using traditional and modern methods.</p>
-                        <span class="story-stat">Safe food production restored</span>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <!-- Success Stories removed per request -->
         
         <!-- Prevention & Policy Section -->
         <div class="prevention-section">
@@ -558,22 +587,22 @@
                 <div class="prevention-card">
                     <div class="prevention-icon">📋</div>
                     <h4>Proper Waste Management Laws</h4>
-                    <p>Government policies that regulate how waste is collected, processed, and disposed of help prevent soil contamination.</p>
+                    <p><strong>Regulate waste flow → prevent soil harm</strong></p>
                 </div>
                 <div class="prevention-card">
                     <div class="prevention-icon">♻️</div>
                     <h4>Recycling Programs</h4>
-                    <p>Recycling is important because it lessens the garbage that pollutes the soil and reduces landfill waste.</p>
+                    <p><strong>Recycling cuts landfill & soil load</strong></p>
                 </div>
                 <div class="prevention-card">
                     <div class="prevention-icon">🗂️</div>
                     <h4>Proper Waste Segregation</h4>
-                    <p>Separating biodegradable, recyclable, and hazardous waste keeps harmful materials out of the soil.</p>
+                    <p><strong>Sort waste → block toxins</strong></p>
                 </div>
                 <div class="prevention-card">
                     <div class="prevention-icon">🌱</div>
                     <h4>Composting Organic Waste</h4>
-                    <p>Composting turns organic waste into natural fertilizer instead of adding trash to landfills.</p>
+                    <p><strong>Compost organics → build healthy soil</strong></p>
                 </div>
             </div>
         </div>
@@ -765,6 +794,9 @@
             </div>
         </div>
         <div class="footer-bottom">
+            <div class="footer-banner">
+                <img src="images/addimage.png" alt="EcoRoot footer illustration" id="siteFooterImage" />
+            </div>
             <p>&copy; 2025 EcoRoot. All rights reserved.</p>
             <p>Built with 💚 for our planet</p>
         </div>
@@ -775,8 +807,10 @@
     <script src="js/hero.js"></script>
     <script src="js/causes.js"></script>
     <script src="js/consequences.js"></script>
+    <script src="js/impactCycler.js"></script>
     <script src="js/solutions.js"></script>
     <script src="js/action.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/footer.js"></script>
 </body>
 </html>

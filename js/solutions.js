@@ -819,4 +819,21 @@ class SolutionsSection {
 // Initialize when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
     window.solutionsSection = new SolutionsSection();
+    
+    // Add interactive card toggle functionality
+    const solutionCards = document.querySelectorAll('.solution-card');
+    solutionCards.forEach(card => {
+        card.addEventListener('click', () => {
+            // Toggle expanded state
+            const isExpanded = card.classList.contains('expanded');
+            
+            // Close other cards
+            solutionCards.forEach(c => c.classList.remove('expanded'));
+            
+            // Toggle current card
+            if (!isExpanded) {
+                card.classList.add('expanded');
+            }
+        });
+    });
 });
