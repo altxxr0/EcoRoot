@@ -26,8 +26,8 @@ class ImpactCycler {
 
     this.data = [
       {
-        icon: '🌾',
-        title: 'Effects on Plants & Crops',
+        icon: '🌱',
+        title: 'Plant Damage',
         points: [
           'Poor or stunted growth',
           'Dull, unhealthy color',
@@ -39,30 +39,69 @@ class ImpactCycler {
         visualize: 'plants'
       },
       {
-        icon: '👤',
-        title: 'Effects on Human Health',
+        icon: '🍽️',
+        title: 'Food Contamination',
+        points: [
+          'Toxins enter food chain',
+          'Heavy metals in crops',
+          'Pesticide residues accumulate',
+          'Unsafe produce for consumption',
+          'Bioaccumulation in livestock'
+        ],
+        colors: ['#E07B3C', '#D4A03B'],
+        visualize: 'food'
+      },
+      {
+        icon: '🏥',
+        title: 'Health Crisis',
         points: [
           'Skin & respiratory issues',
-          'Food poisoning risks',
-          'Children & farmers vulnerable',
-          'Toxic exposure accumulation',
-          'Long-term disease links'
+          'Exposure leads to infection',
+          'Children most vulnerable',
+          'Toxic accumulation in body',
+          'Long-term disease development'
         ],
         colors: ['#C23B22', '#E07B3C'],
         visualize: 'humans'
       },
       {
-        icon: '🌍',
-        title: 'Effects on Environment',
+        icon: '🐾',
+        title: 'Wildlife Impact',
         points: [
-          'Loss of fertility & biodiversity',
-          'Ecosystem damage & collapse',
-          'Water contamination spread',
-          'Harmful gas/dust release',
-          'Wildlife migration / die-off'
+          'Habitat collapse & destruction',
+          'Forced migration patterns',
+          'Population die-off events',
+          'Disrupted food chains',
+          'Loss of biodiversity'
         ],
-        colors: ['#2D5A3D', '#1E3D2A'],
-        visualize: 'environment'
+        colors: ['#8B4513', '#5D4E37'],
+        visualize: 'wildlife'
+      },
+      {
+        icon: '💧',
+        title: 'Water Contamination',
+        points: [
+          'Leaching poisons groundwater',
+          'Surface water pollution',
+          'Aquifer contamination',
+          'Unsafe drinking water',
+          'Agricultural runoff spread'
+        ],
+        colors: ['#4A90A4', '#2D5A3D'],
+        visualize: 'water'
+      },
+      {
+        icon: '🌫️',
+        title: 'Air Quality Degradation',
+        points: [
+          'Dust particles released',
+          'Harmful gases escape',
+          'Respiratory hazards',
+          'Toxic aerosols spread',
+          'Atmospheric contamination'
+        ],
+        colors: ['#6B7B8C', '#4A5D3A'],
+        visualize: 'air'
       }
     ];
 
@@ -163,8 +202,20 @@ class ImpactCycler {
       case 'plants':
         this.drawPlantsViz(ctx, centerX, centerY, time, d.colors);
         break;
+      case 'food':
+        this.drawFoodViz(ctx, centerX, centerY, time, d.colors);
+        break;
       case 'humans':
         this.drawHumansViz(ctx, centerX, centerY, time, d.colors);
+        break;
+      case 'wildlife':
+        this.drawWildlifeViz(ctx, centerX, centerY, time, d.colors);
+        break;
+      case 'water':
+        this.drawWaterViz(ctx, centerX, centerY, time, d.colors);
+        break;
+      case 'air':
+        this.drawAirViz(ctx, centerX, centerY, time, d.colors);
         break;
       case 'environment':
         this.drawEnvironmentViz(ctx, centerX, centerY, time, d.colors);
@@ -739,6 +790,576 @@ class ImpactCycler {
     ctx.fillText('Ecosystem Collapse', cx + 40, soilY + 58);
     ctx.fillStyle = colors[1];
     ctx.fillText('Wildlife Exodus', cx - 23, wildY - 40);
+  }
+
+  drawFoodViz(ctx, cx, cy, time, colors) {
+    // Contaminated food chain visualization
+    const soilY = cy + 80;
+    
+    // Contaminated soil base
+    const soilGrad = ctx.createLinearGradient(cx, soilY - 20, cx, soilY + 60);
+    soilGrad.addColorStop(0, '#8B4513');
+    soilGrad.addColorStop(0.5, '#654321');
+    soilGrad.addColorStop(1, '#3D2817');
+    ctx.fillStyle = soilGrad;
+    ctx.fillRect(cx - 140, soilY - 20, 280, 80);
+    
+    // Toxic particles in soil
+    ctx.fillStyle = colors[0];
+    for (let i = 0; i < 20; i++) {
+      const px = cx - 130 + (i * 13);
+      const py = soilY + 10 + Math.sin(time / 600 + i) * 8;
+      const size = 3 + Math.sin(time / 800 + i) * 1.5;
+      ctx.globalAlpha = 0.6 + Math.sin(time / 500 + i) * 0.3;
+      ctx.beginPath();
+      ctx.arc(px, py, size, 0, Math.PI * 2);
+      ctx.fill();
+    }
+    ctx.globalAlpha = 1;
+    
+    // Contaminated crops growing from soil
+    const crops = [
+      { x: -80, emoji: '🌾', size: 32, contamination: 0.8 },
+      { x: -40, emoji: '🥕', size: 30, contamination: 0.9 },
+      { x: 0, emoji: '🌽', size: 34, contamination: 0.7 },
+      { x: 40, emoji: '🥬', size: 28, contamination: 0.85 },
+      { x: 80, emoji: '🍅', size: 30, contamination: 0.75 }
+    ];
+    
+    crops.forEach((crop, idx) => {
+      const cropX = cx + crop.x;
+      const cropY = soilY - 35;
+      
+      // Contamination warning glow
+      const glowSize = 25 + Math.sin(time / 800 + idx) * 5;
+      ctx.fillStyle = colors[0] + '33';
+      ctx.beginPath();
+      ctx.arc(cropX, cropY, glowSize, 0, Math.PI * 2);
+      ctx.fill();
+      
+      // Crop emoji
+      ctx.font = `${crop.size}px Arial`;
+      ctx.fillText(crop.emoji, cropX - crop.size/2, cropY + crop.size/3);
+      
+      // Warning symbol above crop
+      const warningPhase = ((time / 1500 + idx * 0.2) % 1);
+      if (warningPhase < 0.6) {
+        ctx.font = 'bold 18px Arial';
+        ctx.globalAlpha = 1 - warningPhase * 1.5;
+        ctx.fillStyle = '#FF4444';
+        ctx.fillText('⚠', cropX - 9, cropY - 30 - warningPhase * 15);
+        ctx.globalAlpha = 1;
+      }
+    });
+    
+    // Food chain arrow showing contamination spread
+    ctx.strokeStyle = colors[1];
+    ctx.fillStyle = colors[1];
+    ctx.lineWidth = 3;
+    
+    // Arrow from soil to crops
+    ctx.beginPath();
+    ctx.moveTo(cx - 100, soilY - 5);
+    ctx.lineTo(cx - 80, soilY - 25);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(cx - 80, soilY - 25);
+    ctx.lineTo(cx - 85, soilY - 20);
+    ctx.lineTo(cx - 75, soilY - 20);
+    ctx.fill();
+    
+    // Arrow from crops to consumption
+    ctx.beginPath();
+    ctx.moveTo(cx + 80, soilY - 30);
+    ctx.lineTo(cx + 105, cy - 60);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(cx + 105, cy - 60);
+    ctx.lineTo(cx + 100, cy - 55);
+    ctx.lineTo(cx + 100, cy - 65);
+    ctx.fill();
+    
+    // Plate with contaminated food
+    ctx.strokeStyle = '#666';
+    ctx.lineWidth = 3;
+    ctx.beginPath();
+    ctx.ellipse(cx + 110, cy - 50, 35, 8, 0, 0, Math.PI * 2);
+    ctx.stroke();
+    
+    ctx.font = '24px Arial';
+    ctx.fillText('🍽️', cx + 98, cy - 45);
+    
+    // Danger symbol on plate
+    ctx.font = 'bold 14px Arial';
+    ctx.fillStyle = '#FF0000';
+    ctx.fillText('☠', cx + 128, cy - 42);
+    
+    // Chemical formula labels
+    ctx.font = 'bold 10px monospace';
+    ctx.fillStyle = colors[0];
+    const chemicals = ['Pb', 'Hg', 'Cd', 'As'];
+    chemicals.forEach((chem, idx) => {
+      const chemX = cx - 120 + idx * 60;
+      const chemY = soilY + 35 + Math.sin(time / 700 + idx) * 3;
+      ctx.globalAlpha = 0.7 + Math.sin(time / 500 + idx) * 0.3;
+      ctx.fillText(chem, chemX, chemY);
+    });
+    ctx.globalAlpha = 1;
+    
+    // Labels
+    ctx.font = 'bold 11px Arial';
+    ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
+    ctx.fillRect(cx - 45, soilY + 68, 90, 14);
+    ctx.fillStyle = '#654321';
+    ctx.fillText('Contaminated Soil', cx - 43, soilY + 78);
+    
+    ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
+    ctx.fillRect(cx + 75, cy - 80, 70, 14);
+    ctx.fillStyle = '#C23B22';
+    ctx.fillText('Unsafe Food', cx + 77, cy - 70);
+  }
+
+  drawWildlifeViz(ctx, cx, cy, time, colors) {
+    // Wildlife habitat destruction and migration
+    const soilY = cy + 70;
+    
+    // Degraded habitat/soil
+    const soilGrad = ctx.createLinearGradient(cx, soilY - 15, cx, soilY + 50);
+    soilGrad.addColorStop(0, '#A0826D');
+    soilGrad.addColorStop(0.5, '#8B4513');
+    soilGrad.addColorStop(1, '#654321');
+    ctx.fillStyle = soilGrad;
+    ctx.fillRect(cx - 140, soilY - 15, 280, 65);
+    
+    // Pollution spread in habitat
+    ctx.fillStyle = colors[0] + '44';
+    for (let i = 0; i < 25; i++) {
+      const px = cx - 130 + Math.random() * 260;
+      const py = soilY + Math.random() * 50;
+      const size = 2 + Math.random() * 4;
+      const wobble = Math.sin(time / 600 + i * 0.5) * 2;
+      ctx.beginPath();
+      ctx.arc(px + wobble, py, size, 0, Math.PI * 2);
+      ctx.fill();
+    }
+    
+    // Affected wildlife species
+    const wildlife = [
+      { emoji: '🦎', x: -90, y: -40, health: 0.4, speed: 1.2 },
+      { emoji: '🐛', x: -50, y: -20, health: 0.3, speed: 0.8 },
+      { emoji: '🐝', x: -10, y: -50, health: 0.5, speed: 1.5 },
+      { emoji: '🐦', x: 30, y: -60, health: 0.6, speed: 1.0 },
+      { emoji: '🐸', x: 70, y: -30, health: 0.35, speed: 0.9 }
+    ];
+    
+    wildlife.forEach((animal, idx) => {
+      const ax = cx + animal.x;
+      const ay = cy + animal.y;
+      
+      // Sick/dying aura
+      ctx.fillStyle = colors[0] + '33';
+      const auraSize = 20 + Math.sin(time / 700 + idx) * 4;
+      ctx.beginPath();
+      ctx.arc(ax, ay, auraSize, 0, Math.PI * 2);
+      ctx.fill();
+      
+      // Animal with fading health
+      ctx.font = '28px Arial';
+      const healthPulse = animal.health + Math.sin(time / 600 + idx) * 0.15;
+      ctx.globalAlpha = Math.max(0.3, healthPulse);
+      ctx.fillText(animal.emoji, ax - 14, ay + 9);
+      ctx.globalAlpha = 1;
+      
+      // Migration/escape arrows
+      const fleePhase = ((time / (1500 * animal.speed) + idx * 0.25) % 1);
+      if (fleePhase < 0.65) {
+        const arrowY = ay - 25 - fleePhase * 40;
+        const arrowX = ax + Math.sin(fleePhase * Math.PI) * 15;
+        ctx.strokeStyle = colors[1];
+        ctx.lineWidth = 2.5;
+        ctx.globalAlpha = 1 - fleePhase * 1.3;
+        ctx.beginPath();
+        ctx.moveTo(arrowX, arrowY);
+        ctx.lineTo(arrowX, arrowY - 15);
+        ctx.lineTo(arrowX - 5, arrowY - 10);
+        ctx.moveTo(arrowX, arrowY - 15);
+        ctx.lineTo(arrowX + 5, arrowY - 10);
+        ctx.stroke();
+        ctx.globalAlpha = 1;
+      }
+    });
+    
+    // Dead vegetation showing habitat loss
+    const deadPlants = [
+      { x: -110, y: -15, emoji: '🥀' },
+      { x: -70, y: 5, emoji: '🍂' },
+      { x: 90, y: -10, emoji: '🥀' },
+      { x: 120, y: 10, emoji: '🍂' }
+    ];
+    
+    deadPlants.forEach((plant, idx) => {
+      ctx.font = '26px Arial';
+      const wilt = Math.sin(time / 1000 + idx) * 0.2;
+      ctx.globalAlpha = 0.5 + wilt;
+      ctx.fillText(plant.emoji, cx + plant.x, cy + plant.y);
+    });
+    ctx.globalAlpha = 1;
+    
+    // Biodiversity decline graph
+    ctx.strokeStyle = '#C23B22';
+    ctx.lineWidth = 3;
+    ctx.beginPath();
+    ctx.moveTo(cx - 120, cy + 80);
+    ctx.lineTo(cx - 100, cy + 75);
+    ctx.lineTo(cx - 80, cy + 68);
+    ctx.lineTo(cx - 60, cy + 55);
+    ctx.lineTo(cx - 40, cy + 38);
+    ctx.stroke();
+    
+    // Downward arrow on graph
+    ctx.fillStyle = '#C23B22';
+    ctx.beginPath();
+    ctx.moveTo(cx - 40, cy + 38);
+    ctx.lineTo(cx - 45, cy + 33);
+    ctx.lineTo(cx - 35, cy + 33);
+    ctx.fill();
+    
+    // Population decline counter
+    ctx.font = 'bold 24px Arial';
+    ctx.fillStyle = '#FF0000';
+    const decline = Math.floor(45 + Math.sin(time / 2000) * 5);
+    ctx.fillText(`-${decline}%`, cx + 90, cy + 65);
+    
+    // Labels
+    ctx.font = 'bold 11px Arial';
+    ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
+    ctx.fillRect(cx - 35, cy - 85, 105, 14);
+    ctx.fillStyle = colors[1];
+    ctx.fillText('Species Migration', cx - 33, cy - 75);
+    
+    ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
+    ctx.fillRect(cx + 60, cy + 52, 90, 14);
+    ctx.fillStyle = '#C23B22';
+    ctx.fillText('Population Loss', cx + 62, cy + 62);
+  }
+
+  drawWaterViz(ctx, cx, cy, time, colors) {
+    // Water contamination and leaching visualization
+    const soilY = cy + 50;
+    
+    // Multi-layer soil showing leaching
+    const soilGrad = ctx.createLinearGradient(cx, soilY - 20, cx, soilY + 70);
+    soilGrad.addColorStop(0, '#A0826D');
+    soilGrad.addColorStop(0.3, '#8B4513');
+    soilGrad.addColorStop(0.6, '#654321');
+    soilGrad.addColorStop(1, '#3D2817');
+    ctx.fillStyle = soilGrad;
+    ctx.fillRect(cx - 140, soilY - 20, 280, 90);
+    
+    // Pollutants in soil
+    ctx.fillStyle = colors[0];
+    for (let i = 0; i < 30; i++) {
+      const px = cx - 120 + (i * 8);
+      const py = soilY + Math.random() * 40;
+      const size = 2 + Math.random() * 3;
+      ctx.globalAlpha = 0.6 + Math.sin(time / 500 + i) * 0.3;
+      ctx.beginPath();
+      ctx.arc(px, py, size, 0, Math.PI * 2);
+      ctx.fill();
+    }
+    ctx.globalAlpha = 1;
+    
+    // Leaching droplets moving downward
+    for (let i = 0; i < 8; i++) {
+      const dropX = cx - 100 + i * 30;
+      const phase = ((time / 1200 + i * 0.15) % 1);
+      const dropY = soilY + 5 + phase * 55;
+      
+      if (phase < 0.85) {
+        // Droplet
+        ctx.fillStyle = colors[0] + 'CC';
+        ctx.beginPath();
+        ctx.arc(dropX, dropY, 4, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.beginPath();
+        ctx.moveTo(dropX, dropY);
+        ctx.lineTo(dropX - 3, dropY - 6);
+        ctx.lineTo(dropX + 3, dropY - 6);
+        ctx.fill();
+        
+        // Trail
+        ctx.strokeStyle = colors[0] + '55';
+        ctx.lineWidth = 1.5;
+        ctx.beginPath();
+        ctx.moveTo(dropX, dropY - 7);
+        ctx.lineTo(dropX, dropY - 15);
+        ctx.stroke();
+      }
+    }
+    
+    // Groundwater layer (contaminated)
+    const waterY = cy + 95;
+    const waterGrad = ctx.createLinearGradient(cx, waterY, cx, waterY + 30);
+    waterGrad.addColorStop(0, '#4A90A4' + '88');
+    waterGrad.addColorStop(0.5, '#2D5A66' + 'AA');
+    waterGrad.addColorStop(1, '#1A3D47' + 'CC');
+    ctx.fillStyle = waterGrad;
+    ctx.fillRect(cx - 140, waterY, 280, 30);
+    
+    // Contamination spreading in water
+    const contaminants = [
+      { x: -110, size: 25, speed: 0.8 },
+      { x: -60, size: 30, speed: 1.0 },
+      { x: -10, size: 20, speed: 1.2 },
+      { x: 40, size: 28, speed: 0.9 },
+      { x: 90, size: 22, speed: 1.1 }
+    ];
+    
+    contaminants.forEach((blob, idx) => {
+      const blobX = cx + blob.x + Math.sin(time / (1000 * blob.speed) + idx) * 15;
+      const blobY = waterY + 15 + Math.sin(time / (800 * blob.speed) + idx * 0.5) * 5;
+      
+      ctx.fillStyle = colors[0] + '66';
+      ctx.beginPath();
+      ctx.arc(blobX, blobY, blob.size, 0, Math.PI * 2);
+      ctx.fill();
+      
+      // Ripple effect
+      const ripplePhase = ((time / 1500 + idx * 0.2) % 1);
+      if (ripplePhase < 0.6) {
+        ctx.strokeStyle = colors[0] + Math.floor((1 - ripplePhase) * 100).toString(16);
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.arc(blobX, blobY, blob.size + ripplePhase * 15, 0, Math.PI * 2);
+        ctx.stroke();
+      }
+    });
+    
+    // Wave pattern on water surface
+    ctx.strokeStyle = '#6AB0C6';
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    for (let x = -140; x <= 140; x += 10) {
+      const waveY = waterY + Math.sin((x + time / 300) * 0.1) * 3;
+      if (x === -140) ctx.moveTo(cx + x, waveY);
+      else ctx.lineTo(cx + x, waveY);
+    }
+    ctx.stroke();
+    
+    // Contaminated water droplet reaching aquifer
+    ctx.font = '32px Arial';
+    ctx.fillText('💧', cx - 16, waterY + 22);
+    
+    // Toxic symbol in water
+    ctx.font = 'bold 20px Arial';
+    ctx.fillStyle = '#FF4444';
+    const toxicPulse = 0.7 + Math.sin(time / 600) * 0.3;
+    ctx.globalAlpha = toxicPulse;
+    ctx.fillText('☠', cx + 50, waterY + 20);
+    ctx.globalAlpha = 1;
+    
+    // Arrow showing downward movement
+    ctx.strokeStyle = colors[1];
+    ctx.fillStyle = colors[1];
+    ctx.lineWidth = 3;
+    ctx.beginPath();
+    ctx.moveTo(cx - 50, soilY + 30);
+    ctx.lineTo(cx - 50, soilY + 55);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(cx - 50, soilY + 55);
+    ctx.lineTo(cx - 55, soilY + 50);
+    ctx.lineTo(cx - 45, soilY + 50);
+    ctx.fill();
+    
+    // Chemical formulas
+    ctx.font = 'bold 10px monospace';
+    ctx.fillStyle = colors[0];
+    const chemicals = ['NO₃', 'PO₄', 'NH₄'];
+    chemicals.forEach((chem, idx) => {
+      const chemX = cx - 100 + idx * 60;
+      const chemY = waterY + 42 + Math.sin(time / 700 + idx) * 2;
+      ctx.globalAlpha = 0.8;
+      ctx.fillText(chem, chemX, chemY);
+    });
+    ctx.globalAlpha = 1;
+    
+    // Labels
+    ctx.font = 'bold 11px Arial';
+    ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
+    ctx.fillRect(cx - 35, soilY - 35, 70, 14);
+    ctx.fillStyle = '#654321';
+    ctx.fillText('Leaching', cx - 33, soilY - 25);
+    
+    ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
+    ctx.fillRect(cx - 60, waterY - 15, 120, 14);
+    ctx.fillStyle = '#2D5A66';
+    ctx.fillText('Groundwater Pollution', cx - 58, waterY - 5);
+  }
+
+  drawAirViz(ctx, cx, cy, time, colors) {
+    // Air pollution from contaminated soil
+    const soilY = cy + 80;
+    
+    // Contaminated soil base
+    const soilGrad = ctx.createLinearGradient(cx, soilY - 20, cx, soilY + 60);
+    soilGrad.addColorStop(0, '#A0826D');
+    soilGrad.addColorStop(0.4, '#8B4513');
+    soilGrad.addColorStop(1, '#654321');
+    ctx.fillStyle = soilGrad;
+    ctx.fillRect(cx - 140, soilY - 20, 280, 80);
+    
+    // Heat/volatilization waves rising from soil
+    for (let i = 0; i < 5; i++) {
+      const wavePhase = ((time / 2000 + i * 0.2) % 1);
+      const waveY = soilY - 20 - wavePhase * 100;
+      const waveAlpha = (1 - wavePhase) * 0.3;
+      
+      ctx.strokeStyle = colors[0] + Math.floor(waveAlpha * 255).toString(16).padStart(2, '0');
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      for (let x = -120; x <= 120; x += 8) {
+        const y = waveY + Math.sin((x + time / 200) * 0.1) * 8;
+        if (x === -120) ctx.moveTo(cx + x, y);
+        else ctx.lineTo(cx + x, y);
+      }
+      ctx.stroke();
+    }
+    
+    // Dust particles being lifted
+    for (let i = 0; i < 40; i++) {
+      const particlePhase = ((time / 1500 + i * 0.05) % 1);
+      const px = cx - 130 + (i % 15) * 18 + Math.sin(time / 800 + i) * 10;
+      const py = soilY - particlePhase * 140;
+      const size = 2 + Math.random() * 2;
+      
+      if (particlePhase < 0.9) {
+        ctx.fillStyle = '#654321' + Math.floor((1 - particlePhase) * 200).toString(16).padStart(2, '0');
+        ctx.beginPath();
+        ctx.arc(px, py, size, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+    
+    // Toxic gas clouds rising
+    const gasClouds = [
+      { x: -80, baseY: -30, size: 35, speed: 1.0 },
+      { x: -30, baseY: -50, size: 40, speed: 0.8 },
+      { x: 20, baseY: -40, size: 38, speed: 1.2 },
+      { x: 70, baseY: -45, size: 36, speed: 0.9 }
+    ];
+    
+    gasClouds.forEach((cloud, idx) => {
+      const risePhase = ((time / (1800 * cloud.speed) + idx * 0.25) % 1);
+      const cloudY = cy + cloud.baseY - risePhase * 50;
+      const cloudX = cx + cloud.x + Math.sin(time / 1000 + idx) * 8;
+      const cloudSize = cloud.size + Math.sin(time / 700 + idx) * 4;
+      const cloudAlpha = (1 - risePhase) * 0.6;
+      
+      // Multi-bubble cloud
+      ctx.fillStyle = colors[0] + Math.floor(cloudAlpha * 255).toString(16).padStart(2, '0');
+      ctx.beginPath();
+      ctx.arc(cloudX, cloudY, cloudSize, 0, Math.PI * 2);
+      ctx.arc(cloudX + cloudSize * 0.5, cloudY - 5, cloudSize * 0.6, 0, Math.PI * 2);
+      ctx.arc(cloudX - cloudSize * 0.4, cloudY + 3, cloudSize * 0.5, 0, Math.PI * 2);
+      ctx.fill();
+      
+      // Toxic symbol in cloud
+      if (risePhase < 0.6) {
+        ctx.font = 'bold 16px Arial';
+        ctx.fillStyle = '#FF0000' + Math.floor(cloudAlpha * 255 * 1.2).toString(16).padStart(2, '0');
+        ctx.fillText('☠', cloudX - 8, cloudY + 5);
+      }
+    });
+    
+    // VOC molecules (volatile organic compounds)
+    ctx.font = 'bold 11px monospace';
+    ctx.fillStyle = colors[1];
+    const vocs = ['CH₄', 'C₆H₆', 'VOC'];
+    vocs.forEach((voc, idx) => {
+      const vocPhase = ((time / 1400 + idx * 0.3) % 1);
+      const vocX = cx - 90 + idx * 70 + Math.sin(time / 900 + idx) * 12;
+      const vocY = soilY - 30 - vocPhase * 90;
+      
+      if (vocPhase < 0.8) {
+        ctx.globalAlpha = 1 - vocPhase;
+        ctx.fillText(voc, vocX, vocY);
+      }
+    });
+    ctx.globalAlpha = 1;
+    
+    // Wind direction arrows showing spread
+    const windArrows = [
+      { x: -100, y: -70 },
+      { x: -50, y: -85 },
+      { x: 0, y: -90 },
+      { x: 50, y: -80 }
+    ];
+    
+    windArrows.forEach((arrow, idx) => {
+      const arrowPhase = ((time / 1200 + idx * 0.15) % 1);
+      const arrowX = cx + arrow.x + arrowPhase * 40;
+      const arrowY = cy + arrow.y;
+      
+      if (arrowPhase < 0.7) {
+        ctx.strokeStyle = '#87CEEB' + Math.floor((1 - arrowPhase) * 180).toString(16).padStart(2, '0');
+        ctx.fillStyle = '#87CEEB' + Math.floor((1 - arrowPhase) * 180).toString(16).padStart(2, '0');
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.moveTo(arrowX - 15, arrowY);
+        ctx.lineTo(arrowX, arrowY);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.moveTo(arrowX, arrowY);
+        ctx.lineTo(arrowX - 5, arrowY - 4);
+        ctx.lineTo(arrowX - 5, arrowY + 4);
+        ctx.fill();
+      }
+    });
+    
+    // Air quality indicator
+    ctx.font = 'bold 32px Arial';
+    ctx.fillText('🌫️', cx + 95, cy - 60);
+    
+    // AQI (Air Quality Index) meter
+    ctx.strokeStyle = '#666';
+    ctx.lineWidth = 8;
+    ctx.beginPath();
+    ctx.arc(cx + 110, cy - 30, 25, Math.PI, Math.PI * 2);
+    ctx.stroke();
+    
+    // Danger zone in red
+    ctx.strokeStyle = '#FF0000';
+    ctx.lineWidth = 8;
+    ctx.beginPath();
+    ctx.arc(cx + 110, cy - 30, 25, Math.PI * 0.7, Math.PI * 0.4, true);
+    ctx.stroke();
+    
+    // Needle
+    const needleAngle = Math.PI * 0.6 + Math.sin(time / 1000) * 0.1;
+    ctx.strokeStyle = '#C23B22';
+    ctx.lineWidth = 3;
+    ctx.beginPath();
+    ctx.moveTo(cx + 110, cy - 30);
+    ctx.lineTo(cx + 110 + Math.cos(needleAngle) * 22, cy - 30 + Math.sin(needleAngle) * 22);
+    ctx.stroke();
+    
+    // Labels
+    ctx.font = 'bold 11px Arial';
+    ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
+    ctx.fillRect(cx - 45, soilY + 68, 90, 14);
+    ctx.fillStyle = '#654321';
+    ctx.fillText('Soil Emissions', cx - 43, soilY + 78);
+    
+    ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
+    ctx.fillRect(cx + 55, cy - 95, 110, 14);
+    ctx.fillStyle = colors[1];
+    ctx.fillText('Atmospheric Spread', cx + 57, cy - 85);
+    
+    ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
+    ctx.fillRect(cx + 80, cy - 10, 65, 14);
+    ctx.fillStyle = '#C23B22';
+    ctx.fillText('Poor AQI', cx + 82, cy);
   }
 }
 

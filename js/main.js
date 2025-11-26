@@ -20,6 +20,7 @@ class EcoRootApp {
         this.setupSmoothScrolling();
         this.setupAnimations();
         this.setupAccessibility();
+        this.updateBodyBackground(); // Set initial background
     }
 
     setupNavigation() {
@@ -43,6 +44,7 @@ class EcoRootApp {
             this.updateNavStyle();
             this.updateActiveNavLink();
             this.updateScrollProgress();
+            this.updateBodyBackground();
         }, 50));
     }
 
@@ -53,6 +55,21 @@ class EcoRootApp {
             this.nav?.classList.add('scrolled');
         } else {
             this.nav?.classList.remove('scrolled');
+        }
+    }
+
+    updateBodyBackground() {
+        const heroSection = Utils.$('#hero');
+        if (!heroSection) return;
+        
+        const heroHeight = heroSection.offsetHeight;
+        const scrollY = window.scrollY;
+        
+        // If we're in the hero section (top ~80% of hero height), use hero background
+        if (scrollY < heroHeight * 0.8) {
+            document.body.style.backgroundColor = '#2A1F15'; // Match hero gradient start
+        } else {
+            document.body.style.backgroundColor = ''; // Reset to default from CSS
         }
     }
 

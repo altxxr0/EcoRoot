@@ -25,6 +25,12 @@ class ConsequencesSection {
                         <li>Soil degradation affects 33% of Earth's soils</li>
                         <li>It takes 1,000 years to generate just 3cm of topsoil</li>
                     </ul>
+                    <div class="citations">
+                        <p><strong>Sources:</strong></p>
+                        <p class="citation">FAO (2015). Status of the World's Soil Resources.</p>
+                        <p class="citation">European Environment Agency (2019). Contaminated sites in Europe.</p>
+                        <p class="citation">UNCCD (2017). Global Land Outlook Report.</p>
+                    </div>
                 `,
                 visual: 'soil-animation'
             },
@@ -40,6 +46,11 @@ class ConsequencesSection {
                         <li>Reduced crop yields affect food security</li>
                         <li>Genetic damage to plants reduces biodiversity</li>
                     </ul>
+                    <div class="citations">
+                        <p><strong>Sources:</strong></p>
+                        <p class="citation">WHO (2019). Heavy metals in food crops and health risks.</p>
+                        <p class="citation">Journal of Environmental Quality (2018). Phytoremediation of heavy metal-contaminated soils.</p>
+                    </div>
                 `,
                 visual: 'plant-animation'
             },
@@ -55,6 +66,11 @@ class ConsequencesSection {
                         <li>Nitrate pollution affects drinking water globally</li>
                         <li>Contaminated irrigation spreads pollution to new areas</li>
                     </ul>
+                    <div class="citations">
+                        <p><strong>Sources:</strong></p>
+                        <p class="citation">UNESCO (2020). World Water Development Report.</p>
+                        <p class="citation">EPA (2021). Groundwater contamination sources and prevention.</p>
+                    </div>
                 `,
                 visual: 'water-animation'
             },
@@ -70,6 +86,11 @@ class ConsequencesSection {
                         <li>Habitat destruction forces migration and extinction</li>
                         <li>Soil microorganisms essential for nutrient cycling disappear</li>
                     </ul>
+                    <div class="citations">
+                        <p><strong>Sources:</strong></p>
+                        <p class="citation">IUCN (2020). Soil pollution impacts on biodiversity.</p>
+                        <p class="citation">Environmental Toxicology and Chemistry (2019). Bioaccumulation in terrestrial ecosystems.</p>
+                    </div>
                 `,
                 visual: 'animal-animation'
             },
@@ -86,6 +107,12 @@ class ConsequencesSection {
                         <li>Respiratory issues from soil dust particles</li>
                         <li>Endocrine disruption from pesticide residues</li>
                     </ul>
+                    <div class="citations">
+                        <p><strong>Sources:</strong></p>
+                        <p class="citation">UNICEF & Pure Earth (2020). The Toxic Truth: Children's exposure to lead pollution.</p>
+                        <p class="citation">WHO (2021). Soil pollution and human health nexus.</p>
+                        <p class="citation">The Lancet (2017). Health impacts of environmental contamination.</p>
+                    </div>
                 `,
                 visual: 'health-animation'
             },
@@ -102,6 +129,12 @@ class ConsequencesSection {
                         <li>Remediation costs can exceed $100,000 per acre</li>
                         <li>Healthcare burden from pollution-related diseases</li>
                     </ul>
+                    <div class="citations">
+                        <p><strong>Sources:</strong></p>
+                        <p class="citation">FAO & ITPS (2015). Economic valuation of soil degradation.</p>
+                        <p class="citation">World Bank (2019). The hidden costs of soil degradation.</p>
+                        <p class="citation">EPA (2020). Superfund site remediation cost analysis.</p>
+                    </div>
                 `,
                 visual: 'economy-animation'
             },
@@ -118,6 +151,12 @@ class ConsequencesSection {
                         <li>Climate change accelerates soil degradation</li>
                         <li>Extreme weather events worsen erosion and pollution spread</li>
                     </ul>
+                    <div class="citations">
+                        <p><strong>Sources:</strong></p>
+                        <p class="citation">IPCC (2019). Climate Change and Land Report.</p>
+                        <p class="citation">Nature (2017). Soil carbon sequestration impacts on global climate change.</p>
+                        <p class="citation">Science (2018). Soil degradation and greenhouse gas emissions.</p>
+                    </div>
                 `,
                 visual: 'climate-animation'
             }
@@ -207,10 +246,20 @@ class ConsequencesSection {
         const data = this.impactData[type];
         if (!data) return;
 
+        // Split content and citations
+        const contentParts = data.content.split('<div class="citations">');
+        const mainContent = contentParts[0];
+        const citations = contentParts[1] ? '<div class="citations">' + contentParts[1] : '';
+
         this.modalIcon.textContent = data.icon;
         this.modalTitle.textContent = data.title;
-        this.modalBody.innerHTML = data.content;
+        this.modalBody.innerHTML = mainContent;
         this.renderVisual(data.visual);
+        
+        // Add citations after visual if they exist
+        if (citations) {
+            this.modalVisual.insertAdjacentHTML('afterend', citations);
+        }
 
         this.modal.classList.add('active');
         document.body.style.overflow = 'hidden';
@@ -219,6 +268,12 @@ class ConsequencesSection {
     closeModal() {
         this.modal.classList.remove('active');
         document.body.style.overflow = '';
+        
+        // Clear any dynamically added citations
+        const citations = this.modal.querySelector('.citations');
+        if (citations && !this.modalBody.contains(citations)) {
+            citations.remove();
+        }
     }
 
     renderVisual(visualType) {
