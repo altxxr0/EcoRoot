@@ -64,10 +64,15 @@
 
   qsa('.site-footer .footer-links a').forEach(a => {
     a.addEventListener('click', (e) => {
-      e.preventDefault();
+      const href = a.getAttribute('href');
+      const isExternal = href && (href.startsWith('http') || a.target === '_blank');
       const label = a.textContent.trim();
       const act = actions[label];
-      if(act){ act(); }
+      if (act && (!isExternal || href === '#')) {
+        e.preventDefault();
+        act();
+      }
+      // else: allow default for external links
     });
   });
 
