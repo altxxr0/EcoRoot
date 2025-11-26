@@ -204,6 +204,13 @@
     transform: none;
 }
 
+/* Impact stats and story cards should always be visible */
+.impact-stat.animate-on-scroll,
+.story-card.animate-on-scroll {
+    opacity: 1;
+    transform: none;
+}
+
 .animate-on-scroll.animated {
     opacity: 1;
     transform: translateY(0);

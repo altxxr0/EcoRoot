@@ -75,64 +75,100 @@
         <div class="section-header">
             <span class="section-number">01</span>
             <h2 class="section-title">What's Poisoning Our Earth?</h2>
-            <p class="section-description">Drag the pollution sources onto the soil to see their devastating effects</p>
+            <p class="section-description">Click on pollution sources to see how they devastate our soil</p>
         </div>
         
+        <!-- New Click-Based Interactive Layout -->
         <div class="causes-interactive">
-            <!-- Pollution Sources (Draggable) -->
-            <div class="pollution-sources" id="pollutionSources">
-                <div class="source-item" draggable="true" data-type="industrial">
-                    <div class="source-icon">🏭</div>
-                    <span class="source-label">Industrial Waste</span>
-                    <p class="source-info">Heavy metals, chemicals, and toxic byproducts</p>
+            <!-- Pollution Sources Panel -->
+            <div class="pollution-sources">
+                <h3>Pollution Sources</h3>
+                <p class="sources-instruction">Click a source to see its impact on the environment</p>
+                <div class="sources-list">
+                    <div class="source-item" data-source="deforestation">
+                        <span class="source-icon">🌲</span>
+                        <div class="source-info">
+                            <div class="source-name">Deforestation</div>
+                            <div class="source-desc">Trees removed, soil exposed</div>
+                        </div>
+                    </div>
+                    <div class="source-item" data-source="mining">
+                        <span class="source-icon">⛏️</span>
+                        <div class="source-info">
+                            <div class="source-name">Mining Runoff</div>
+                            <div class="source-desc">Acid & heavy metals seep out</div>
+                        </div>
+                    </div>
+                    <div class="source-item" data-source="industrial">
+                        <span class="source-icon">🏭</span>
+                        <div class="source-info">
+                            <div class="source-name">Industrial Waste</div>
+                            <div class="source-desc">Toxic factory chemicals</div>
+                        </div>
+                    </div>
+                    <div class="source-item" data-source="pesticides">
+                        <span class="source-icon">🧪</span>
+                        <div class="source-info">
+                            <div class="source-name">Pesticides</div>
+                            <div class="source-desc">Chemicals kill soil life</div>
+                        </div>
+                    </div>
+                    <div class="source-item" data-source="waste">
+                        <span class="source-icon">🗑️</span>
+                        <div class="source-info">
+                            <div class="source-name">Improper Waste</div>
+                            <div class="source-desc">Garbage contaminates land</div>
+                        </div>
+                    </div>
+                    <div class="source-item" data-source="plastic">
+                        <span class="source-icon">🛢️</span>
+                        <div class="source-info">
+                            <div class="source-name">Plastic Waste</div>
+                            <div class="source-desc">Microplastics infiltrate soil</div>
+                        </div>
+                    </div>
                 </div>
-                <div class="source-item" draggable="true" data-type="pesticides">
-                    <div class="source-icon">🧪</div>
-                    <span class="source-label">Pesticides</span>
-                    <p class="source-info">Chemical compounds that persist in soil for years</p>
-                </div>
-                <div class="source-item" draggable="true" data-type="plastic">
-                    <div class="source-icon">🛢️</div>
-                    <span class="source-label">Plastic Waste</span>
-                    <p class="source-info">Microplastics that never fully decompose</p>
-                </div>
-                <div class="source-item" draggable="true" data-type="mining">
-                    <div class="source-icon">⛏️</div>
-                    <span class="source-label">Mining Runoff</span>
-                    <p class="source-info">Acid drainage and heavy metal contamination</p>
-                </div>
+                <button class="causes-reset-btn" id="resetCauses">🔄 Reset Environment</button>
             </div>
             
-            <!-- Soil Drop Zone -->
-            <div class="soil-drop-zone" id="soilDropZone">
-                <div class="drop-zone-visual">
-                    <canvas id="causesSoilCanvas" class="soil-canvas"></canvas>
-                    <div class="pollution-effects-layer" id="pollutionEffectsLayer">
-                        <!-- Visible pollution items will appear here -->
-                    </div>
-                    <div class="drop-hint" id="dropHint">
-                        <span>Drop pollutants here</span>
-                    </div>
-                </div>
-                <div class="contamination-meter">
-                    <span class="meter-label">Contamination Level</span>
-                    <div class="meter-bar">
-                        <div class="meter-fill" id="contaminationFill"></div>
-                    </div>
-                    <span class="meter-percentage" id="contaminationPercent">0%</span>
-                </div>
+            <!-- Environment Visualization Canvas -->
+            <div class="environment-visualization">
+                <canvas id="environmentCanvas" class="environment-canvas"></canvas>
+                <div class="environment-status" id="envStatus">🌿 Healthy Environment</div>
             </div>
             
-            <!-- Pollution Effects Panel -->
-            <div class="effects-panel" id="effectsPanel">
-                <h3>Active Contaminants</h3>
-                <ul class="effects-list" id="effectsList"></ul>
-                <button class="reset-btn" id="resetCauses">Reset Soil</button>
+            <!-- Effects Panel -->
+            <div class="effects-panel">
+                <h3>Active Effects</h3>
+                <div class="active-effects" id="activeEffects">
+                    <div class="no-effects">
+                        <div class="no-effects-icon">🌱</div>
+                        <p>Click a pollution source to see its environmental impact</p>
+                    </div>
+                </div>
             </div>
         </div>
         
         <!-- Detailed Cause Information -->
         <div class="cause-details" id="causeDetails">
+            <div class="detail-card" data-cause="deforestation">
+                <h4>Deforestation</h4>
+                <p>Removing trees exposes soil to erosion, removing the natural protection and nutrients that forests provide to the land.</p>
+                <ul>
+                    <li>Exposed soil loses nutrients and organic matter rapidly</li>
+                    <li>Increases risk of landslides and flooding</li>
+                    <li>Destroys habitats for soil organisms</li>
+                </ul>
+            </div>
+            <div class="detail-card" data-cause="mining">
+                <h4>Mining Activities</h4>
+                <p>Mining operations expose sulfide minerals that react with air and water, creating acid mine drainage that devastates surrounding ecosystems.</p>
+                <ul>
+                    <li>Acid drainage can continue for centuries after mines close</li>
+                    <li>Heavy metals concentrate in agricultural areas</li>
+                    <li>Destroys aquatic life for miles downstream</li>
+                </ul>
+            </div>
             <div class="detail-card" data-cause="industrial">
                 <h4>Industrial Waste</h4>
                 <p>Factories release heavy metals like lead, mercury, and cadmium into the soil through improper disposal. These toxins can persist for centuries.</p>
@@ -143,12 +179,21 @@
                 </ul>
             </div>
             <div class="detail-card" data-cause="pesticides">
-                <h4>Pesticides & Herbicides</h4>
+                <h4>Pesticides & Chemical Fertilizers</h4>
                 <p>Agricultural chemicals designed to kill pests don't discriminate - they destroy beneficial soil organisms essential for healthy ecosystems.</p>
                 <ul>
                     <li>5.6 billion pounds of pesticides used annually worldwide</li>
-                    <li>Some compounds persist in soil for 15+ years</li>
+                    <li>Causes chemical buildup that harms soil organisms</li>
                     <li>Kills earthworms, beneficial bacteria, and fungi</li>
+                </ul>
+            </div>
+            <div class="detail-card" data-cause="waste">
+                <h4>Improper Waste Disposal</h4>
+                <p>When garbage is not properly disposed of, harmful substances leach into the soil. This includes household waste, electronic waste, and hazardous materials.</p>
+                <ul>
+                    <li>Adds toxic chemicals and heavy metals to soil</li>
+                    <li>Contaminates groundwater through seepage</li>
+                    <li>Creates breeding grounds for disease-carrying pests</li>
                 </ul>
             </div>
             <div class="detail-card" data-cause="plastic">
@@ -160,15 +205,7 @@
                     <li>Leaches harmful additives into groundwater</li>
                 </ul>
             </div>
-            <div class="detail-card" data-cause="mining">
-                <h4>Mining Activities</h4>
-                <p>Mining operations expose sulfide minerals that react with air and water, creating acid mine drainage that devastates surrounding ecosystems.</p>
-                <ul>
-                    <li>Acid drainage can continue for centuries after mines close</li>
-                    <li>Destroys aquatic life for miles downstream</li>
-                    <li>Heavy metals concentrate in agricultural areas</li>
-                </ul>
-            </div>
+        </div>
         </div>
     </section>
 
@@ -262,19 +299,74 @@
         <!-- Impact Statistics -->
         <div class="impact-stats">
             <div class="impact-stat">
+                <div class="stat-icon">🌱</div>
+                <h4>Plant Damage</h4>
+                <p>Plants in polluted soil grow poorly, look dull and unhealthy, and seeds may not sprout properly or die early</p>
+            </div>
+            <div class="impact-stat">
                 <div class="stat-icon">🍽️</div>
                 <h4>Food Contamination</h4>
-                <p>Heavy metals in soil enter crops, affecting 820+ million people with food insecurity</p>
+                <p>Crops grown in polluted soil contain harmful substances that can cause poisoning when eaten</p>
             </div>
             <div class="impact-stat">
                 <div class="stat-icon">🏥</div>
                 <h4>Health Crisis</h4>
-                <p>Soil pollutants linked to cancer, neurological damage, and developmental issues</p>
+                <p>Contact with polluted soil causes skin infections, respiratory problems, and diseases - children and farmers are most at risk</p>
             </div>
             <div class="impact-stat">
-                <div class="stat-icon">🦠</div>
-                <h4>Ecosystem Collapse</h4>
-                <p>Loss of soil biodiversity threatens 25% of all Earth's species</p>
+                <div class="stat-icon">🐾</div>
+                <h4>Wildlife Impact</h4>
+                <p>Animals in polluted areas may migrate or die due to contamination of their food and habitat</p>
+            </div>
+            <div class="impact-stat">
+                <div class="stat-icon">💧</div>
+                <h4>Water Contamination</h4>
+                <p>Pollutants seep through soil and contaminate groundwater and nearby water sources</p>
+            </div>
+            <div class="impact-stat">
+                <div class="stat-icon">🌫️</div>
+                <h4>Air Quality</h4>
+                <p>Polluted soil releases harmful gases and dust particles that affect the air we breathe</p>
+            </div>
+        </div>
+        
+        <!-- Detailed Effects Section -->
+        <div class="effects-details">
+            <h3>Understanding the Full Impact</h3>
+            <div class="effects-grid">
+                <div class="effect-card">
+                    <h4>🌾 Effects on Plants & Crops</h4>
+                    <ul>
+                        <li>Plants may die or grow poorly in polluted soil</li>
+                        <li>Weakened plants with slow growth</li>
+                        <li>Plants look dull and unhealthy in color</li>
+                        <li>Seeds may not sprout properly or die early</li>
+                        <li>Soil loses natural nutrients needed for plant growth</li>
+                        <li>Food grown in polluted soil contains harmful substances</li>
+                    </ul>
+                </div>
+                <div class="effect-card">
+                    <h4>👤 Effects on Human Health</h4>
+                    <ul>
+                        <li>Skin diseases and infections from soil contact</li>
+                        <li>Respiratory problems from contaminated dust</li>
+                        <li>Food poisoning from eating contaminated crops</li>
+                        <li>Children and farmers are most at risk</li>
+                        <li>Can spread germs and cause toxic exposure</li>
+                        <li>Long-term exposure linked to serious diseases</li>
+                    </ul>
+                </div>
+                <div class="effect-card">
+                    <h4>🌍 Effects on Environment</h4>
+                    <ul>
+                        <li>Loss of soil fertility and biodiversity</li>
+                        <li>Damaged ecosystems that can't recover</li>
+                        <li>Water contamination through seepage</li>
+                        <li>Harmful gases and dust released into air</li>
+                        <li>Animals migrate or die due to contamination</li>
+                        <li>Reduced natural minerals and microorganisms in soil</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </section>
@@ -284,70 +376,135 @@
         <div class="section-header">
             <span class="section-number">03</span>
             <h2 class="section-title">Healing the Earth</h2>
-            <p class="section-description">Apply remediation techniques to restore the polluted soil</p>
+            <p class="section-description">Click on solutions to see how they restore the polluted soil</p>
         </div>
         
-        <div class="solutions-simulator">
-            <!-- Polluted Soil Visualization -->
-            <div class="solution-soil-container">
-                <canvas id="solutionCanvas"></canvas>
-                <div class="soil-health-indicator">
-                    <span class="health-label">Soil Health</span>
-                    <div class="health-bar">
-                        <div class="health-fill" id="healthFill"></div>
+        <!-- New Click-Based Interactive Layout -->
+        <div class="solutions-interactive">
+            <!-- Solution Methods Panel -->
+            <div class="solution-methods">
+                <h3>Restoration Methods</h3>
+                <p class="methods-instruction">Click a solution to see how it heals the environment</p>
+                <div class="methods-list">
+                    <div class="method-item" data-method="phytoremediation">
+                        <span class="method-icon">🌻</span>
+                        <div class="method-info">
+                            <div class="method-name">Phytoremediation</div>
+                            <div class="method-desc">Plants absorb toxins</div>
+                        </div>
                     </div>
-                    <span class="health-status" id="healthStatus">Severely Polluted</span>
-                </div>
-            </div>
-            
-            <!-- Solution Tools -->
-            <div class="solution-tools" id="solutionTools">
-                <h3>Remediation Techniques</h3>
-                <div class="tools-grid">
-                    <div class="tool-item" draggable="true" data-solution="phytoremediation">
-                        <div class="tool-icon">🌻</div>
-                        <span class="tool-name">Phytoremediation</span>
-                        <p class="tool-desc">Plants that absorb toxins from soil</p>
-                        <span class="tool-effect">+15% Health</span>
+                    <div class="method-item" data-method="composting">
+                        <span class="method-icon">🍂</span>
+                        <div class="method-info">
+                            <div class="method-name">Composting</div>
+                            <div class="method-desc">Organic fertilizer</div>
+                        </div>
                     </div>
-                    <div class="tool-item" draggable="true" data-solution="composting">
-                        <div class="tool-icon">🍂</div>
-                        <span class="tool-name">Composting</span>
-                        <p class="tool-desc">Organic matter restores nutrients</p>
-                        <span class="tool-effect">+20% Health</span>
+                    <div class="method-item" data-method="bioremediation">
+                        <span class="method-icon">🦠</span>
+                        <div class="method-info">
+                            <div class="method-name">Bioremediation</div>
+                            <div class="method-desc">Microbes eat pollutants</div>
+                        </div>
                     </div>
-                    <div class="tool-item" draggable="true" data-solution="bioremediation">
-                        <div class="tool-icon">🦠</div>
-                        <span class="tool-name">Bioremediation</span>
-                        <p class="tool-desc">Microorganisms break down pollutants</p>
-                        <span class="tool-effect">+25% Health</span>
+                    <div class="method-item" data-method="recycling">
+                        <span class="method-icon">♻️</span>
+                        <div class="method-info">
+                            <div class="method-name">Recycling</div>
+                            <div class="method-desc">Reduce waste pollution</div>
+                        </div>
                     </div>
-                    <div class="tool-item" draggable="true" data-solution="covercrops">
-                        <div class="tool-icon">🌿</div>
-                        <span class="tool-name">Cover Crops</span>
-                        <p class="tool-desc">Prevent erosion, add organic matter</p>
-                        <span class="tool-effect">+10% Health</span>
+                    <div class="method-item" data-method="segregation">
+                        <span class="method-icon">🗂️</span>
+                        <div class="method-info">
+                            <div class="method-name">Waste Segregation</div>
+                            <div class="method-desc">Separate harmful waste</div>
+                        </div>
                     </div>
-                    <div class="tool-item" draggable="true" data-solution="soilamendments">
-                        <div class="tool-icon">iteite</div>
-                        <span class="tool-name">Soil Amendments</span>
-                        <p class="tool-desc">Lime and biochar neutralize toxins</p>
-                        <span class="tool-effect">+18% Health</span>
-                    </div>
-                    <div class="tool-item" draggable="true" data-solution="filtration">
-                        <div class="tool-icon">🔬</div>
-                        <span class="tool-name">Filtration Systems</span>
-                        <p class="tool-desc">Remove contaminants from water</p>
-                        <span class="tool-effect">+12% Health</span>
+                    <div class="method-item" data-method="covercrops">
+                        <span class="method-icon">🌿</span>
+                        <div class="method-info">
+                            <div class="method-name">Cover Crops</div>
+                            <div class="method-desc">Protect & enrich soil</div>
+                        </div>
                     </div>
                 </div>
-                <button class="reset-btn" id="resetSolutions">Reset Simulation</button>
+                <button class="solutions-reset-btn" id="resetSolutions">🔄 Reset to Polluted</button>
             </div>
             
-            <!-- Applied Solutions List -->
-            <div class="applied-solutions" id="appliedSolutions">
-                <h4>Applied Techniques</h4>
-                <ul class="applied-list" id="appliedList"></ul>
+            <!-- Restoration Visualization Canvas -->
+            <div class="restoration-visualization">
+                <canvas id="restorationCanvas" class="restoration-canvas"></canvas>
+                <div class="restoration-status" id="restorationStatus">☠️ Severely Polluted</div>
+            </div>
+            
+            <!-- Benefits Panel -->
+            <div class="benefits-panel">
+                <h3>Active Benefits</h3>
+                <div class="active-benefits" id="activeBenefits">
+                    <div class="no-benefits">
+                        <div class="no-benefits-icon">🌱</div>
+                        <p>Click a solution to see how it benefits the environment</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Detailed Solution Information -->
+        <div class="solution-details" id="solutionDetails">
+            <div class="detail-card" data-solution="phytoremediation">
+                <h4>Phytoremediation</h4>
+                <p>Uses plants like sunflowers and mustard greens to absorb heavy metals and toxins from contaminated soil.</p>
+                <ul>
+                    <li>Plants accumulate pollutants in their tissues</li>
+                    <li>Cost-effective for large contaminated areas</li>
+                    <li>Also improves soil structure and biodiversity</li>
+                </ul>
+            </div>
+            <div class="detail-card" data-solution="composting">
+                <h4>Composting</h4>
+                <p>Turns organic waste into nutrient-rich fertilizer that replenishes soil and reduces landfill waste.</p>
+                <ul>
+                    <li>Reduces methane emissions from landfills</li>
+                    <li>Adds beneficial microorganisms to soil</li>
+                    <li>Improves soil water retention capacity</li>
+                </ul>
+            </div>
+            <div class="detail-card" data-solution="bioremediation">
+                <h4>Bioremediation</h4>
+                <p>Uses microorganisms like bacteria and fungi to break down and consume toxic pollutants in contaminated soil.</p>
+                <ul>
+                    <li>Natural, cost-effective cleanup method</li>
+                    <li>Breaks down organic pollutants completely</li>
+                    <li>Works on oil, pesticides, and heavy metals</li>
+                </ul>
+            </div>
+            <div class="detail-card" data-solution="recycling">
+                <h4>Recycling Programs</h4>
+                <p>Reduces the amount of waste that ends up in landfills and soil by reusing materials.</p>
+                <ul>
+                    <li>Prevents toxic e-waste contamination</li>
+                    <li>Reduces need for raw material extraction</li>
+                    <li>Saves energy and reduces pollution</li>
+                </ul>
+            </div>
+            <div class="detail-card" data-solution="segregation">
+                <h4>Waste Segregation</h4>
+                <p>Separating waste at source ensures hazardous materials don't contaminate regular waste and soil.</p>
+                <ul>
+                    <li>Prevents mixing of toxic and organic waste</li>
+                    <li>Enables proper disposal of hazardous materials</li>
+                    <li>Makes recycling more efficient</li>
+                </ul>
+            </div>
+            <div class="detail-card" data-solution="covercrops">
+                <h4>Cover Crops</h4>
+                <p>Plants grown specifically to protect and improve soil between main crop seasons.</p>
+                <ul>
+                    <li>Prevents erosion from wind and rain</li>
+                    <li>Adds organic matter when plowed under</li>
+                    <li>Reduces need for chemical fertilizers</li>
+                </ul>
             </div>
         </div>
         
@@ -390,6 +547,33 @@
                         <p>Local communities restored contaminated rice paddies using traditional and modern methods.</p>
                         <span class="story-stat">Safe food production restored</span>
                     </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Prevention & Policy Section -->
+        <div class="prevention-section">
+            <h3>Prevention & Government Policies</h3>
+            <div class="prevention-grid">
+                <div class="prevention-card">
+                    <div class="prevention-icon">📋</div>
+                    <h4>Proper Waste Management Laws</h4>
+                    <p>Government policies that regulate how waste is collected, processed, and disposed of help prevent soil contamination.</p>
+                </div>
+                <div class="prevention-card">
+                    <div class="prevention-icon">♻️</div>
+                    <h4>Recycling Programs</h4>
+                    <p>Recycling is important because it lessens the garbage that pollutes the soil and reduces landfill waste.</p>
+                </div>
+                <div class="prevention-card">
+                    <div class="prevention-icon">🗂️</div>
+                    <h4>Proper Waste Segregation</h4>
+                    <p>Separating biodegradable, recyclable, and hazardous waste keeps harmful materials out of the soil.</p>
+                </div>
+                <div class="prevention-card">
+                    <div class="prevention-icon">🌱</div>
+                    <h4>Composting Organic Waste</h4>
+                    <p>Composting turns organic waste into natural fertilizer instead of adding trash to landfills.</p>
                 </div>
             </div>
         </div>
