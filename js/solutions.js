@@ -18,6 +18,7 @@ class SolutionsSection {
         this.microbes = [];
         this.compostPiles = [];
         this.recyclingBins = [];
+        this.segregationBins = [];
         this.coverCrops = [];
         this.cleanupParticles = [];
         this.healthLevel = 10; // Start polluted
@@ -125,6 +126,7 @@ class SolutionsSection {
         this.microbes = [];
         this.compostPiles = [];
         this.recyclingBins = [];
+        this.segregationBins = [];
         this.coverCrops = [];
         this.cleanupParticles = [];
         
@@ -194,7 +196,27 @@ class SolutionsSection {
     }
 
     deactivateSolution(type) {
-        // Solutions persist but stop adding new elements
+        // Remove visual elements when a solution is deactivated
+        switch(type) {
+            case 'phytoremediation':
+                this.plants = [];
+                break;
+            case 'composting':
+                this.compostPiles = [];
+                break;
+            case 'bioremediation':
+                this.microbes = [];
+                break;
+            case 'recycling':
+                this.recyclingBins = [];
+                break;
+            case 'segregation':
+                this.segregationBins = [];
+                break;
+            case 'covercrops':
+                this.coverCrops = [];
+                break;
+        }
     }
 
     // ==========================================
@@ -410,20 +432,12 @@ class SolutionsSection {
     // SEGREGATION - Waste sorting
     // ==========================================
     startSegregation() {
-        // Visual: sorting bins appear
-        const bins = [
-            { x: this.width * 0.15, type: 'organic', color: '#4CAF50' },
-            { x: this.width * 0.35, type: 'plastic', color: '#2196F3' },
-            { x: this.width * 0.55, type: 'metal', color: '#9E9E9E' }
+        // Visual: sorting bins appear - use separate array from recycling
+        this.segregationBins = [
+            { x: this.width * 0.15, type: 'organic', color: '#4CAF50', y: this.groundY + 10, items: 0 },
+            { x: this.width * 0.35, type: 'plastic', color: '#2196F3', y: this.groundY + 10, items: 0 },
+            { x: this.width * 0.55, type: 'metal', color: '#9E9E9E', y: this.groundY + 10, items: 0 }
         ];
-        
-        bins.forEach(binData => {
-            this.recyclingBins.push({
-                ...binData,
-                y: this.groundY + 10,
-                items: 0
-            });
-        });
     }
 
     // ==========================================
@@ -465,6 +479,7 @@ class SolutionsSection {
         this.drawPollutionParticles();
         this.drawCompostPiles();
         this.drawRecyclingBins();
+        this.drawSegregationBins();
         this.drawCoverCrops();
         this.drawPlants();
         this.drawMicrobes();
@@ -673,6 +688,21 @@ class SolutionsSection {
                     }
                 });
             }
+        });
+    }
+
+    drawSegregationBins() {
+        this.segregationBins.forEach(bin => {
+            // Bin body with distinct style
+            this.ctx.fillStyle = bin.color || '#FF9800';
+            this.ctx.fillRect(bin.x - 15, bin.y - 30, 30, 35);
+            
+            // Label based on type
+            this.ctx.fillStyle = 'white';
+            this.ctx.font = 'bold 12px Arial';
+            this.ctx.textAlign = 'center';
+            const label = bin.type === 'organic' ? '🥬' : bin.type === 'plastic' ? '🧴' : '🥫';
+            this.ctx.fillText(label, bin.x, bin.y - 10);
         });
     }
 
