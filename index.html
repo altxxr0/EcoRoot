@@ -1,0 +1,602 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EcoRoot — Interactive Soil Story</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="presentation-container">
+    <!-- SLIDE 1: Hero -->
+    <section class="slide hero-slide" data-slide="0">
+      <div class="slide-content">
+        <h1>🌱 EcoRoot Interactive</h1>
+        <p class="subtitle">A visual story about soil pollution</p>
+        <p class="description">Make choices to learn the outcomes. Every decision matters.</p>
+        <button class="btn btn-primary" data-action="start">Start the Story</button>
+      </div>
+      <div class="hero-visual">
+        <div class="sun"></div>
+      </div>
+    </section>
+
+    <!-- SLIDE 2: Intro -->
+    <section class="slide intro-slide" data-slide="1">
+      <div class="slide-content">
+        <h2>Healthy Soil Environment</h2>
+	<h2 style="font-size:25px;margin-bottom:25px;margin-top:-25px;">Road to abundance future!</h2>
+        <p>Soil feeds us, filters water, and stores carbon.</p>
+        <p>But it's fragile — pollution and bad practices can damage it irreversibly.</p>
+        <p class="lead">You will face four key decisions. Choose wisely:</p>
+        <ul class="intro-list">
+          <li>🏭 Should industry be regulated or left alone?</li>
+          <li>🌱 Will the community take action or ignore the problem?</li>
+          <li>💧 Can we stop polluted runoff from reaching water?</li>
+          <li>🥗 Will farmers clean up soils before harvesting food?</li>
+        </ul>
+        <button class="btn btn-primary" data-action="continue">Continue</button>
+      </div>
+    </section>
+
+    <!-- SLIDE 3: Scene 1 - Causes -->
+    <section class="slide causes-slide" data-slide="2">
+      <div class="slide-split">
+        <div class="visual-panel">
+          <div class="visual-wrap causes-visual" data-visual="causes">
+            <div class="scene-layer city-layer" aria-hidden="true"></div>
+            <div class="scene-layer farm-layer" aria-hidden="true"></div>
+            <div class="scene-layer skyline-haze" aria-hidden="true"></div>
+            <div class="sky"></div>
+            <div class="factory">
+              <div class="chimney"></div>
+              <div class="smoke"></div>
+            </div>
+            <div class="field">
+              <div class="ground-highlight" id="ground-highlight-causes"></div>
+              <div class="waste-pile" id="waste-pile"></div>
+              <div class="truck" id="waste-truck"></div>
+              <div class="plant alive" id="plant-causes"></div>
+              <div class="soil">
+                <div class="soil-layer top"></div>
+                <div class="soil-layer mid"></div>
+                <div class="soil-layer sub"></div>
+              </div>
+              <div class="pollutant" id="pollutant-causes"></div>
+            </div>
+            <div class="pollution-cloud-layer" aria-hidden="true"></div>
+            <div class="healing-wave-layer" aria-hidden="true"></div>
+            <div class="alert-beacon" aria-hidden="true"></div>
+          </div>
+        </div>
+        <div class="content-panel">
+          <h2>Scene 1: Industrial Impact</h2>
+          <p>A large factory has been operating on the outskirts of a small, agricultural town for decades. While it provides jobs for the community, it currently uses outdated disposal methods, releasing untreated chemical waste directly into the soil surrounding the plant. This is the cheaper option but has started affecting the local environment.</p>
+          <p class="prompt">The town council is now debating two choices:</p>
+          <div class="choices" data-scene="causes">
+            <button class="choice-btn" data-choice="dump" data-scene="causes">
+              Option 1: Allow Dumping: Continue with the current, inexpensive disposal methods. This keeps operational costs low and preserves the factory's current profitability, but risks long-term environmental damage to the land and nearby water sources.5
+              <span class="desc">Cheaper option</span>
+            </button>
+            <button class="choice-btn" data-choice="clean" data-scene="causes">
+              Enforce clean disposal
+              <span class="desc">Regulated approach</span>
+            </button>
+          </div>
+          <div class="controls">
+            <button class="btn btn-next" disabled>Next Section</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 4: Scene 2 - Prevention -->
+    <section class="slide prevention-slide" data-slide="3">
+      <div class="slide-split">
+        <div class="visual-panel">
+          <div class="visual-wrap prevention-visual" data-visual="prevention">
+            <div class="scene-layer community-backdrop" aria-hidden="true"></div>
+            <div class="scene-layer hazard-dump" id="hazard-dump" aria-hidden="true"></div>
+            <div class="scene-layer compost-station-layer" id="compost-station" aria-hidden="true"></div>
+            <div class="scene-layer remediation-layer" id="remediation-layer" aria-hidden="true"></div>
+            <div class="contamination-haze" id="contamination-haze"></div>
+            <div class="community">
+              <div class="person"></div>
+              <div class="compost-bin hidden-element" id="compost-for-remediation"></div>
+              <div class="plant dead" id="dead-plant-1"></div>
+              <div class="plant dead" id="dead-plant-2"></div>
+              <div class="scattered-waste" id="scattered-waste"></div>
+            </div>
+            <div class="soil">
+              <div class="soil-layer top" id="soil-top-prevention"></div>
+              <div class="soil-layer mid"></div>
+              <div class="soil-layer sub"></div>
+            </div>
+            <div class="healing-rings" aria-hidden="true"></div>
+            <div class="hazard-lines" aria-hidden="true"></div>
+            <div class="soil-sparkles" aria-hidden="true"></div>
+          </div>
+        </div>
+        <div class="content-panel">
+          <h2>Scene 2: Community Action</h2>
+          <p>The community can remediate the soil or ignore the damage.</p>
+          <p class="prompt">What will they choose?</p>
+          <div class="choices" data-scene="prevention">
+            <button class="choice-btn" data-choice="compost" data-scene="prevention">
+              Start composting
+              <span class="desc">Organic recycling</span>
+            </button>
+            <button class="choice-btn" data-choice="phytoremediation" data-scene="prevention">
+              Plant remediation species
+              <span class="desc">Natural soil healing</span>
+            </button>
+            <button class="choice-btn" data-choice="ignore" data-scene="prevention">
+              Do nothing
+              <span class="desc">No action taken</span>
+            </button>
+          </div>
+          <div class="controls">
+            <button class="btn btn-next" disabled>Next Section</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 5: Water Impact -->
+    <section class="slide water-slide" data-slide="4">
+      <div class="slide-split">
+        <div class="visual-panel">
+          <div class="visual-wrap water-visual" data-visual="water">
+            <div class="water-sky"></div>
+            <div class="mountain-range"></div>
+            <div class="river" id="river-flow">
+              <div class="river-glint"></div>
+            </div>
+            <div class="riparian-reeds" id="riparian-reeds"></div>
+            <div class="fish-school" id="fish-school"></div>
+            <div class="sensor-buoy" id="sensor-buoy"></div>
+            <div class="aquifer" id="aquifer"></div>
+            <div class="water-well" id="water-well">
+              <div class="well-water"></div>
+            </div>
+            <div class="culvert" id="culvert"></div>
+            <div class="runoff-plume" id="runoff-plume"></div>
+            <div class="treatment-plant" id="treatment-plant"></div>
+            <div class="buffer-strip" id="buffer-strip"></div>
+            <div class="community-row" id="community-row"></div>
+            <div class="water-droplet" id="water-droplet"></div>
+          </div>
+        </div>
+        <div class="content-panel">
+          <h2>Scene 3: Watershed Ripple</h2>
+          <p>Contaminated soil can leach toxins into groundwater and nearby rivers, affecting communities downstream.</p>
+          <p class="prompt">How do we keep the water clean?</p>
+          <div class="choices" data-scene="water">
+            <button class="choice-btn" data-choice="buffer" data-scene="water">
+              Build riparian buffers
+              <span class="desc">Native roots trap pollutants</span>
+            </button>
+            <button class="choice-btn" data-choice="treatment" data-scene="water">
+              Upgrade treatment plant
+              <span class="desc">Filters runoff before release</span>
+            </button>
+            <button class="choice-btn" data-choice="ignore-water" data-scene="water">
+              Ignore runoff
+              <span class="desc">Let contaminants flow</span>
+            </button>
+          </div>
+          <div class="controls">
+            <button class="btn btn-next" disabled>Next Section</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 6: Plant Health -->
+    <section class="slide plants-slide" data-slide="5">
+      <div class="slide-split">
+        <div class="visual-panel">
+          <div class="visual-wrap plants-visual" data-visual="plants">
+            <div class="field-bed"></div>
+            <div class="field-grid">
+              <div class="crop healthy" id="healthy-crop-1"></div>
+              <div class="crop healthy" id="healthy-crop-2"></div>
+              <div class="crop sick" id="sick-crop-1"></div>
+              <div class="crop sick" id="sick-crop-2"></div>
+            </div>
+            <div class="microbe-layer" id="microbe-layer"></div>
+            <div class="soil-kit" id="soil-kit"></div>
+            <div class="safety-gear" id="safety-gear"></div>
+            <div class="nutrient-meter" id="nutrient-meter">
+              <span class="meter-label">NPK</span>
+              <div class="meter-bar"></div>
+            </div>
+            <div class="produce-crate" id="produce-crate"></div>
+            <div class="reject-crate" id="reject-crate"></div>
+            <div class="toxicity-wave" id="toxicity-wave"></div>
+            <div class="nutrient-sparkle" id="nutrient-sparkle"></div>
+          </div>
+        </div>
+        <div class="content-panel">
+          <h2>Scene 4: Harvest Health</h2>
+          <p>Plants grown in polluted soils struggle to absorb nutrients and can store toxins that end up on our plates.</p>
+          <p class="prompt">How do we restore safe harvests?</p>
+          <div class="choices" data-scene="plants">
+            <button class="choice-btn" data-choice="rotate" data-scene="plants">
+              Rotate crops & cover
+              <span class="desc">Dilutes and rebuilds soil</span>
+            </button>
+            <button class="choice-btn" data-choice="biochar" data-scene="plants">
+              Add biochar & compost
+              <span class="desc">Locks toxins, feeds microbes</span>
+            </button>
+            <button class="choice-btn" data-choice="sell" data-scene="plants">
+              Sell produce anyway
+              <span class="desc">Exports contamination</span>
+            </button>
+          </div>
+          <div class="controls">
+            <button class="btn btn-next" disabled>Next Section</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 7: Conclusion -->
+    <section class="slide conclusion-slide" data-slide="6">
+      <div class="slide-content conclusion-content">
+        <h2>What We Learned</h2>
+        <div class="summary-box">
+          <p id="final-summary">Your choices shaped the outcome of soil health.</p>
+        </div>
+        <div class="takeaway-box">
+          <h3>🌍 Take Action Today</h3>
+          <ul>
+            <li>♻️ Segregate and compost waste</li>
+            <li>🌳 Plant native trees and species</li>
+            <li>📢 Advocate for clean industrial practices</li>
+            <li>🤝 Join community conservation efforts</li>
+          </ul>
+        </div>
+        <p class="conclusion-message">We must act before it's too late. Soil is life.</p>
+        <button class="btn btn-primary" data-action="restart">Restart</button>
+      </div>
+    </section>
+  </div>
+
+  <!-- Modal for Bad Outcome -->
+  <div class="modal hidden" id="bad-outcome-modal">
+    <div class="modal-content">
+      <h3>⚠️ Bad Outcome</h3>
+      <p id="bad-outcome-message">This choice harms the soil. Try a different action.</p>
+      <button class="btn btn-secondary" id="modal-retry">Try Again</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EcoRoot Interactive</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="hero">
+    <h1>🌱 EcoRoot Interactive</h1>
+    <p>Learn. Act. Protect the Soil.</p>
+    <div class="hero-stats">
+      <div class="stat">
+        <span class="stat-number">33%</span>
+        <span class="stat-label">of global soil is degraded</span>
+      </div>
+      <div class="stat">
+        <span class="stat-number">1M+</span>
+        <span class="stat-label">species depend on soil</span>
+      </div>
+      <div class="stat">
+        <span class="stat-number">60</span>
+        <span class="stat-label">years of harvests left</span>
+      </div>
+    </div>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#modules">Modules</a>
+      <a href="#quiz">Quiz</a>
+      <a href="#actions">Eco Actions</a>
+      <a href="#survey">Survey</a>
+    </nav>
+  </header>
+
+  <section id="about" class="section fade-in about-section">
+    <h2>About EcoRoot</h2>
+    <div class="about-content">
+      <p>EcoRoot Interactive is an educational platform dedicated to raising awareness about soil health and environmental sustainability. Soil is the foundation of life on Earth, it feeds us, filters our water, and supports countless ecosystems. Yet, we often overlook its critical importance.</p>
+      <p><strong>Our Mission:</strong> To empower students, educators, and communities with knowledge and practical skills to protect soil from degradation and pollution.</p>
+      <p><strong>Why It Matters:</strong> Every second, the world loses soil equivalent to 24 football fields to erosion. Industrial pollution, improper waste management, and unsustainable practices threaten food security and biodiversity.</p>
+    </div>
+  </section>
+
+  <section id="modules" class="section fade-in">
+    <h2>Learning Modules</h2>
+    <div class="grid">
+      <div class="card expandable" data-module="causes">
+        <h3>🏭 Causes of Soil Pollution</h3>
+        <p>Explore how waste disposal and industrial activities contribute to soil pollution.</p>
+        <button class="expand-btn">Learn More</button>
+        <div class="module-details hidden">
+          <div class="detail-item">
+            <h4>Industrial Contamination</h4>
+            <p>Heavy metals and chemicals from factories seep into soil, affecting plant growth and entering the food chain. Over <strong>30% of global soil</strong> contains harmful industrial pollutants.</p>
+            <ul>
+              <li>Lead, cadmium, and zinc accumulation</li>
+              <li>Oil spills and chemical leaks</li>
+              <li>Mining waste and tailings</li>
+            </ul>
+          </div>
+          <div class="detail-item">
+            <h4>Agricultural Practices</h4>
+            <p>Excessive pesticide use and monoculture reduce soil biodiversity and fertility.</p>
+            <ul>
+              <li>Pesticide residues persist for years</li>
+              <li>Over-fertilization causes nutrient runoff</li>
+              <li>Soil erosion from improper tilling</li>
+            </ul>
+          </div>
+          <div class="detail-item">
+            <h4>Waste Accumulation</h4>
+            <p>Improper disposal of household and industrial waste introduces toxins into soil.</p>
+            <ul>
+              <li>Landfill leachate contamination</li>
+              <li>Plastic micro-particles accumulation</li>
+              <li>E-waste containing toxic elements</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="card expandable" data-module="consequences">
+        <h3>⚠️ Consequences of Soil Degradation</h3>
+        <p>Understand how soil degradation affects food, health, and the environment.</p>
+        <button class="expand-btn">Learn More</button>
+        <div class="module-details hidden">
+          <div class="detail-item">
+            <h4>Food Security Threat</h4>
+            <p>Degraded soil produces nutritionally poor crops, threatening global food security.</p>
+            <ul>
+              <li>Reduced crop yield by up to 50%</li>
+              <li>Decreased nutrient density in produce</li>
+              <li>Increased food prices and inflation</li>
+            </ul>
+          </div>
+          <div class="detail-item">
+            <h4>Human Health Impact</h4>
+            <p>Contaminated soil leads to bioaccumulation of toxins in food chains.</p>
+            <ul>
+              <li>Heavy metal poisoning from contaminated vegetables</li>
+              <li>Increased cancer and disease rates in polluted areas</li>
+              <li>Respiratory issues from dust and particles</li>
+            </ul>
+          </div>
+          <div class="detail-item">
+            <h4>Ecosystem Collapse</h4>
+            <p>Soil pollution destroys habitat for critical microorganisms and species.</p>
+            <ul>
+              <li>90% of soil organisms rely on soil health</li>
+              <li>Biodiversity loss reduces ecosystem resilience</li>
+              <li>Disrupted carbon cycle accelerates climate change</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="card expandable" data-module="prevention">
+        <h3>✅ Prevention & Remediation</h3>
+        <p>Learn sustainable ways to maintain soil health and prevent contamination.</p>
+        <button class="expand-btn">Learn More</button>
+        <div class="module-details hidden">
+          <div class="detail-item">
+            <h4>Sustainable Farming</h4>
+            <p>Implement eco-friendly agricultural practices that restore soil health.</p>
+            <ul>
+              <li>Crop rotation and polyculture systems</li>
+              <li>Organic composting and natural fertilizers</li>
+              <li>No-till farming to preserve soil structure</li>
+            </ul>
+          </div>
+          <div class="detail-item">
+            <h4>Waste Management</h4>
+            <p>Proper segregation and disposal prevent soil contamination.</p>
+            <ul>
+              <li>Segregate hazardous waste at source</li>
+              <li>Proper landfill design and management</li>
+              <li>Recycling programs reduce waste volume</li>
+            </ul>
+          </div>
+          <div class="detail-item">
+            <h4>Soil Restoration</h4>
+            <p>Active remediation strategies can restore degraded soils.</p>
+            <ul>
+              <li>Bioremediation using microorganisms</li>
+              <li>Phytoremediation with specialized plants</li>
+              <li>Soil amendments with biochar and compost</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="quiz" class="section fade-in">
+    <h2>Interactive Quiz</h2>
+    <div id="progress-bar"><div id="progress"></div></div>
+    <div id="quiz-container"></div>
+    <button id="submitQuiz">Submit</button>
+    <p id="result"></p>
+  </section>
+
+  <section id="actions" class="section fade-in">
+    <h2>🌍 Eco Actions You Can Take</h2>
+    <div class="actions-grid">
+      <div class="action-card">
+        <div class="action-icon">♻️</div>
+        <h3>Waste Segregation</h3>
+        <p class="impact-badge">💚 High Impact</p>
+        <p><strong>Difficulty:</strong> Easy | <strong>Time:</strong> Daily | <strong>Impact:</strong> Reduces landfill waste by 40-60%</p>
+        <div class="action-details">
+          <h4>How to Do It:</h4>
+          <ol>
+            <li><strong>Separate at source:</strong> Use different bins for organic, recyclable, and non-recyclable waste</li>
+            <li><strong>Know your categories:</strong> Plastic, paper, metal, glass, organic matter</li>
+            <li><strong>Clean items:</strong> Rinse containers before recycling to prevent contamination</li>
+            <li><strong>Keep it consistent:</strong> Train family/colleagues on proper segregation</li>
+          </ol>
+          <p class="success-tip">✓ <strong>Success Tip:</strong> Color-coded bins make segregation intuitive for everyone!</p>
+        </div>
+      </div>
+
+      <div class="action-card">
+        <div class="action-icon">🌱</div>
+        <h3>Organic Composting</h3>
+        <p class="impact-badge">💚💚 Very High Impact</p>
+        <p><strong>Difficulty:</strong> Medium | <strong>Time:</strong> 2-3 hours setup | <strong>Impact:</strong> Creates nutrient-rich soil, reduces 30% of household waste</p>
+        <div class="action-details">
+          <h4>How to Start:</h4>
+          <ol>
+            <li><strong>Choose a location:</strong> Sunny, well-drained spot in your garden or apartment balcony</li>
+            <li><strong>Get a compost bin:</strong> DIY with plastic containers or buy a composting unit</li>
+            <li><strong>Layer materials:</strong> Brown (dry leaves, cardboard) + Green (food scraps, grass) = 3:1 ratio</li>
+            <li><strong>Maintain moisture:</strong> Keep it moist like a squeezed sponge, turn weekly</li>
+            <li><strong>Wait 3-6 months:</strong> Transform waste into rich, dark compost</li>
+          </ol>
+          <div class="do-dont-box">
+            <div class="do-section">
+              <strong>✓ DO compost:</strong>
+              <ul>
+                <li>Fruit & vegetable scraps</li>
+                <li>Coffee grounds & tea bags</li>
+                <li>Grass clippings & leaves</li>
+                <li>Paper & cardboard</li>
+              </ul>
+            </div>
+            <div class="dont-section">
+              <strong>✗ DON'T compost:</strong>
+              <ul>
+                <li>Meat, dairy, oils</li>
+                <li>Diseased plants</li>
+                <li>Pet waste</li>
+                <li>Treated wood</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="action-card">
+        <div class="action-icon">🌳</div>
+        <h3>Plant Trees & Native Plants</h3>
+        <p class="impact-badge">💚💚💚 Highest Impact</p>
+        <p><strong>Difficulty:</strong> Easy | <strong>Time:</strong> 1-2 hours | <strong>Impact:</strong> Binds soil, prevents erosion, absorbs CO₂</p>
+        <div class="action-details">
+          <h4>How to Plant:</h4>
+          <ol>
+            <li><strong>Choose native species:</strong> Plants suited to your local climate and soil</li>
+            <li><strong>Prepare the soil:</strong> Loosen soil, mix with compost for nutrient boost</li>
+            <li><strong>Dig appropriate hole:</strong> Same depth and 2x width of root ball</li>
+            <li><strong>Plant carefully:</strong> Place plant, backfill with soil, water thoroughly</li>
+            <li><strong>Mulch around base:</strong> 2-3 inches of organic mulch retains moisture</li>
+            <li><strong>Water regularly:</strong> First year needs consistent watering</li>
+          </ol>
+          <p class="benefits-box">
+            <strong>Benefits of Native Plants:</strong>
+            <ul>
+              <li>🦋 Attract pollinators and local wildlife</li>
+              <li>💧 Require less water and maintenance</li>
+              <li>🌍 Support local biodiversity</li>
+              <li>🌳 Provide natural carbon sequestration</li>
+            </ul>
+          </p>
+        </div>
+      </div>
+
+      <div class="action-card">
+        <div class="action-icon">🚫</div>
+        <h3>Reduce Chemical Use</h3>
+        <p class="impact-badge">💚 High Impact</p>
+        <p><strong>Difficulty:</strong> Easy | <strong>Time:</strong> Ongoing | <strong>Impact:</strong> Prevents 50+ kg chemicals/hectare entering soil</p>
+        <div class="action-details">
+          <h4>Practical Alternatives:</h4>
+          <ul>
+            <li><strong>Pesticides:</strong> Use neem oil, beneficial insects, companion planting</li>
+            <li><strong>Fertilizers:</strong> Switch to organic compost, animal manure, seaweed</li>
+            <li><strong>Herbicides:</strong> Manual weeding, mulching, vinegar solutions</li>
+            <li><strong>Home cleaners:</strong> Baking soda, vinegar, lemon juice, castile soap</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="action-card">
+        <div class="action-icon">🤝</div>
+        <h3>Join Community Initiatives</h3>
+        <p class="impact-badge">💚 Multiplied Impact</p>
+        <p><strong>Difficulty:</strong> Easy | <strong>Time:</strong> Weekly/Monthly | <strong>Impact:</strong> Amplifies environmental action through collective effort</p>
+        <div class="action-details">
+          <h4>Get Involved:</h4>
+          <ul>
+            <li>🌳 Participate in local tree-planting campaigns</li>
+            <li>🧹 Join community cleanup drives</li>
+            <li>📚 Organize soil health awareness workshops</li>
+            <li>🌾 Support local organic farmers and farmers' markets</li>
+            <li>📢 Advocate for sustainable policies in your community</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="action-card">
+        <div class="action-icon">🎓</div>
+        <h3>Spread Awareness</h3>
+        <p class="impact-badge">💚 Catalytic Impact</p>
+        <p><strong>Difficulty:</strong> Easy | <strong>Time:</strong> Flexible | <strong>Impact:</strong> Inspires others to take action</p>
+        <div class="action-details">
+          <h4>How to Share:</h4>
+          <ul>
+            <li>📱 Share soil health facts on social media</li>
+            <li>🎤 Present to schools and community groups</li>
+            <li>✉️ Email facts to friends and family</li>
+            <li>🗳️ Support environmental policies and petitions</li>
+            <li>📺 Watch and share documentaries about soil conservation</li>
+          </ul>
+          <p><strong>Remember:</strong> Every action counts, and collective awareness drives change!</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="survey" class="section fade-in">
+    <h2>📋 Feedback Survey</h2>
+    <p>Help us improve! Your feedback shapes the future of environmental education.</p>
+    <div class="survey-container">
+      <div id="quickPoll" class="quick-poll">
+        <h3>Quick Poll: What's Your Top Eco Action?</h3>
+        <div class="poll-options">
+          <button class="poll-btn" data-option="composting">🌱 Composting</button>
+          <button class="poll-btn" data-option="waste-segregation">♻️ Waste Segregation</button>
+          <button class="poll-btn" data-option="planting">🌳 Planting Trees</button>
+          <button class="poll-btn" data-option="reducing-chemicals">🚫 Reducing Chemicals</button>
+        </div>
+        <p id="pollResult" class="poll-result"></p>
+      </div>
+      <p style="text-align: center; margin-top: 30px;">
+        <strong>For detailed feedback:</strong> <a href="https://forms.gle/" target="_blank">Take our full survey here →</a>
+      </p>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 EcoRoot Interactive | STI College Dasmariñas</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
