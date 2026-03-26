@@ -45,12 +45,3 @@ In the future, we could improve on the JavaScript and jQuery implementation. As 
 Overall, this experience taught us how technical tools can support environmental education. More importantly, it showed us how teamwork, planning, and testing are just as important as the code itself. Nonetheless, it was challenging and stressful at times, but we managed to pull through and gained a lot of experience.
 
 ---
-
-## Team Members
-
-- **Faulve, Jovohn Antoine Merick P.**
-- **Belardo, Adrian**
-- **Leyros, Cyrus Jay A.**
-- **Nebab, Kharl Geofpril M.**
-- **Panadero, Marquin Shane C.**
-- **Parais, Mark Denver G.**
